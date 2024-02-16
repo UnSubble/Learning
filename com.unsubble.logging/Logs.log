@@ -1,0 +1,7 @@
+18:43:37.120 [main] FATAL com.unsubble.logging.Main - log1 calisti
+18:43:37.121 [main] INFO  com.unsubble.log.Logger2 - Log2 completed.
+18:43:37.121 [main] WARN  com.unsubble.Loglama - log3 yazdi.
+18:44:58.627 [main] FATAL com.unsubble.logging.Main - log1 calisti
+18:44:58.628 [main] WARN  com.unsubble.Loglama - log3 yazdi.
+19:57:37.120 [main] FATAL com.unsubble.logging.Main - log1 calisti
+19:57:37.122 [main] WARN  com.unsubble.Loglama - log3 yazdi.
