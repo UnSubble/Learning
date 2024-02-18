@@ -73,6 +73,8 @@ public class ArraysImportant {
 		arr4[1] = new int[2];
 		// arr4[2] = arr5; // DOES NOT COMPILE
 		
+		int[] arr10 = new int[0]; // LEGAL
+		
 	}
 	
 	static class Animals{

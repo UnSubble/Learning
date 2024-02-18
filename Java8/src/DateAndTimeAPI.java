@@ -14,17 +14,22 @@ public class DateAndTimeAPI {
 		LocalDate date = LocalDate.now();
 		LocalDate date1 = LocalDate.ofYearDay(2010, 60);
 		System.out.println(date1.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+		
 		LocalTime time = LocalTime.now();
 		System.out.println(time);
+		
 		LocalDateTime dateTime = LocalDateTime.now();
 		System.out.println(dateTime);
+		
 		ZoneId defaultZone = ZoneId.systemDefault();
 		System.out.println(defaultZone);
+		
 		ZonedDateTime zdt = ZonedDateTime.now();
 		System.out.println(zdt);
-		// UTC = 0 olarak tutar.
-		Instant instant = Instant.now();
+		
+		Instant instant = Instant.now(); // UTC = 0 olarak tutar.
 		System.out.println(instant);
+		
 		// Period sınıfı localDate ile ilgilenir. Duration ise localTime ile.
 		Period period = Period.ofYears(467);
 		System.out.println(period);
