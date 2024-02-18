@@ -14,5 +14,21 @@ public class DeclaringAVariable {
 		
 		// İlk önce class seviyesindeki değişkenler initialize edilir. Daha sonra initializer block'lar (
 		// yalnızca gövdesi olan static{ } gibi olan bloklar) çalışır. Sonrasında constructor çalışır.
+		
+		// Long d = 8; // DOES NOT COMPILE çünkü hem type casting hem de autoboxing yapmaz.
+		Integer e = 8;
+		long f = e; // LEGAL çünkü hem unboxing hem de implicitly cast yapar.
+		
+		Integer i1 = 100;
+		Integer i2 = 100;	
+		System.out.println(i1 == i2); // true
+		System.out.println(i1.equals(i2)); // true
+		
+		Integer i3 = 1000;
+		Integer i4 = 1000;
+		System.out.println(i3 == i4); // false çünkü bir cachepool var ve bu java.lang.Integer.IntegerCache
+									  // sınıfındaki low ve high değişkenleri ile belirleniyor. Bunu 
+									  // çalıştırırken komut girerek değiştirebiliriz.
+		System.out.println(i3.equals(i4)); // true
 	}
 }
