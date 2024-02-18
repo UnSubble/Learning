@@ -12,6 +12,8 @@ public class DeclaringAVariable {
 		Integer.valueOf("42"); // Integer döner.
 		Integer.parseInt("42"); // int döner.
 		
+		// int f = c * (long) c; // DOES NOT COMPILE çünkü long * int = long
+		
 		// İlk önce class seviyesindeki değişkenler initialize edilir. Daha sonra initializer block'lar (
 		// yalnızca gövdesi olan static{ } gibi olan bloklar) çalışır. Sonrasında constructor çalışır.
 		
