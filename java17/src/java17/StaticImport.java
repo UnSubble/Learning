@@ -4,6 +4,7 @@ package java17;
 // static import pckg2.StaticImportSample // DOES NOT COMPILE
 import static pckg2.StaticImportSample.variable; // eğer farklı bir paketteki aynı isimli değişken veya 
 import static pckg2.StaticImportSample.method; // metotu da import etseydik. Compile sıkıntısı çıkardı.
+import static pckg2.StaticImportSample.*; // LEGAL
 
 public class StaticImport {
 	
