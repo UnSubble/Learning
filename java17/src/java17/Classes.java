@@ -26,6 +26,8 @@ class LittleBeetle extends Beetle {
 		System.out.println(numberOfLegs); // 8
 		System.out.println(super.numberOfLegs); // 6
 		System.out.println(((Insect)this).numberOfLegs); // 4
+		Insect m = this;
+		System.out.println(m.numberOfLegs); // 4
 	}
 }
 
