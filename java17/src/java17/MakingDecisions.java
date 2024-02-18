@@ -28,6 +28,9 @@ public class MakingDecisions {
 		if (a instanceof Number b) {
 		}
 		
+		int superNum = 5;
+		// if (superNum instanceof Integer) // primitive tipler için instanceof yoktur.
+		
 		// if (a instanceof Integer data || data.compareTo(5) > 0) // DOES NOT COMPILE
 								// çünkü sol taraf false olduğunda sağ taraftaki değişken hiç olmayacak.
 		
