@@ -25,6 +25,14 @@ public class MethodOverloadingAdvanced {
 	public static String calc(Integer i, long j) {
 		return "6";
 	}
+	
+	public static String calc(int... i) {
+		return "7";
+	}
+	
+	public static String calc(Integer i, Integer j, Integer k) {
+		return "8";
+	}
 
 	public static void main(String[] args) {
 		System.out.println(calc(1, 2)); // 1
@@ -33,7 +41,8 @@ public class MethodOverloadingAdvanced {
 		System.out.println(calc(3, 4L)); // 2
 		System.out.println(calc(Integer.valueOf(2), 2L)); // 6
 		System.out.println(calc(2, 2)); // Eğer 1 dönen calc() metotu olmasaydı 2 ve 3 dönen calc() metotları
-										// aynı önceliğe sahip olduğu için compile olmayacaktı.
+										// aynı önceliğe sahip olduğu için compile olmayacaktı.	
+		System.out.println(calc(1, 2, 3)); // 8 -> vararg yerine autoboxing'i tercih eder.
 		
 		System.out.println(calc("a")); // 1
 		System.out.println(calc("a", "b")); // 2
