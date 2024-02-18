@@ -66,11 +66,37 @@ public class MethodsAndAccessModifiers {
 		System.out.println(m.str); // null olsa bile çalışır.
 		
 		m.zooAnimalCheckup(true); // private olsa bile static bir metottan aynı classta iken erişebiliriz.
+	
+		m.calc((byte) 2); // burada calc(short) metotu çalışacaktır.
+		
+		m.calc2(2); // burada boxing ile uğraşmak yerine widening (genişletme) işlemini tercih eder.
+					// bu yüzden calc2(long) metotu çalışacaktır.
+	}
+	
+	private int calc(int num) {
+		return 2 * num;
+	}
+	
+	private int calc(short num) {
+		return 2 * num;
+	}
+	
+	private long calc2(Integer num) {
+		return num;
+	}
+	
+	private long calc2(long num) {
+		return num;
 	}
 	
 	public static void walkDog(int length, int... steps) {
 		System.out.println(length + " " + steps.length);
 	}
+	
+	private void fly(int... args) {
+	}
+	
+	// private void fly(int[] args) { } // DOES NOT COMPILE çünkü varargs da zaten bir arraydir.
 }
 
 class Sample extends AccessModifierSample {
