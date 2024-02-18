@@ -97,6 +97,12 @@ public class MethodsAndAccessModifiers {
 	}
 	
 	// private void fly(int[] args) { } // DOES NOT COMPILE çünkü varargs da zaten bir arraydir.
+	
+	public void moo(int... i) {
+	}
+	
+	public void moo(int i, int... j) { // LEGAL
+	}
 }
 
 class Sample extends AccessModifierSample {
