@@ -33,7 +33,7 @@ public class Classes {
 	// bir constructor başka bir constructor'ı çağırıyorsa (super veya this) bu çağırma her zaman 
 	// constructor'ın ilk satırında gerçekleşmelidir. Ve aynı zamanda iki defa çağıramayız.
 	
-	// constructor'ın biz yazmasak bile ilk satırı super() olur.
+	// constructor'ın biz yazmasak bile ilk satırı super() olur. 
 }
 
 class Mammal {
@@ -42,4 +42,4 @@ class Mammal {
 
 // class Seal extends Mammal { } // DOES NOT COMPILE çünkü super class'ın default constructor'ı ezilmiş.
 								 // aynı zamanda Seal sınıfının super class'taki halini karşılayan 
-								 // constructor olmadığı için kod compile olmaz.
+								 // constructor olmadığı için kod compile olmaz. (super'le)

@@ -1,11 +1,5 @@
 package java17;
 
-class Hippo {
-	static {
-		System.out.print("A");
-	}
-}
-
 public class InitializingObjectPriority extends Hippo {
 
 	public static void main(String[] args) {
@@ -17,4 +11,10 @@ public class InitializingObjectPriority extends Hippo {
 		System.out.print("B");
 	}
 
+}
+
+class Hippo {
+	static {
+		System.out.print("A");
+	}
 }
