@@ -19,8 +19,9 @@ class BactrianCamel extends Camel {
 	@Override
 	protected int getNumberOfHumps() throws IOException{ // override ettiği metotun access modifier'ı ile 
 		return 2;										 // ya aynı seviye ya da üst seviyeleri olabilir.
-		                             					 // private -> package -> protected -> public
-	}
+		                             					 // package -> protected -> public
+	}													 // private yok çünkü private metotlar override 
+														 // edilmezler. Zaten subclass'ta gözükmüyorlar.
 	
 	private int get() { // -> bu metot override değildir çünkü private access modifier override edilemez.
 		return -1;
@@ -38,7 +39,7 @@ class ThreeHumpsCamel extends Camel {
 }
 
 public class InitializingMembers {
-
+		// Override metotlarda objenin tipi ne ise onun metotu çalışır. (Yani referans türden bağımsızdır.)
 }
 
 class Rhino {

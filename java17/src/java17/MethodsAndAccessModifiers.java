@@ -94,18 +94,18 @@ public class MethodsAndAccessModifiers {
 	}
 	
 	private void fly(int... args) {
-	}
-	
+	}	
 	// private void fly(int[] args) { } // DOES NOT COMPILE çünkü varargs da zaten bir arraydir.
 	
-	public void moo(int... i) {
-	}
 	
+	public void moo(int... i) {
+	}	
 	public void moo(int i, int... j) { // LEGAL
 	}
 }
 
 class Sample extends AccessModifierSample {
+	
 	private void swim() {
 		this.floatInWater(); // LEGAL
 	}
@@ -128,3 +128,10 @@ class Sample extends AccessModifierSample {
 
 	// Initializer block'lar birden fazla ise yukarıdan aşağıya doğru çalışırlar.
 	// Static initializer blocklar sınıf yüklendiği zaman çalışır.
+
+class Ex {
+	
+	void overloaded() { }
+	
+	protected void overloaded(int n) { }  // LEGAL
+}
