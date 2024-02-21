@@ -55,6 +55,9 @@ class OuterClass {
 	static enum Colors { // inner enum'lar da biz yazsak da yazmasak da static tanımlanırlar.
 		RED, BLUE, YELLOW
 	}
+	
+	interface P { // inner interface'ler de hem public hem static olarak tanımlanırlar.
+	}
 }
 
 
@@ -209,4 +212,15 @@ class OyterClass4 {
 			}
 		};
 	}
+}
+
+
+interface OuterInterface {
+	interface InnerInterface {
+	}
+	class Static { // yazsak da yazmasak da public static (enum ve recordlar içiğn de öyle)
+	}
+}
+
+class Impl extends OuterInterface.Static implements OuterInterface, OuterInterface.InnerInterface { // LEGAL
 }
