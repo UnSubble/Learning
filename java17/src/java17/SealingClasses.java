@@ -27,10 +27,13 @@ class SubPanda extends Panda {
 
 
 
-abstract sealed class Wolf permits Timber {
+abstract sealed class Wolf permits Timber, Nimber {
 }
 
 final class Timber extends Wolf {
+}
+
+non-sealed abstract class Nimber extends Wolf {
 }
 
 // final class MyWolf extends Wolf {} // DOES NOT COMPILE

@@ -20,7 +20,7 @@ public class Polymorphism {
 	public static void main(String[] args) {
 		Dog dog = new Dog();
 		CanSwim can = dog;
-		BadWolf wolf = (BadWolf) can; // ClassCastException
+		// BadWolf wolf = (BadWolf) can; // ClassCastException
 		
 		BadWolf wolf2 = new BadWolf();
 		// if (wolf2 instanceof Dog) {} // DOES NOT COMPILE

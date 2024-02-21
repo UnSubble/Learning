@@ -97,6 +97,10 @@ public class MakingDecisions {
 		System.out.println("reachable"); // sonsuz loop olsa bile kabul ediyor nedense.
 										// ama num < 5 yerine true olsaydı compile hatası verirdi.
 		
+		for (final var s : new int[] {1,2,3}) {
+			System.out.println(s);
+		}
+		
 		do System.out.println(5);
 		while (num < 5);          // tek satır burada da legal
 		
