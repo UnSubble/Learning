@@ -1,10 +1,15 @@
 package java17;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
+import java.util.Stack;
 
 public class CollectionsAPIs {
 	public static void main(String[] args) {
@@ -53,5 +58,45 @@ public class CollectionsAPIs {
 		list3.remove(0);
 		System.out.println(Arrays.toString(strArr)); // ["1"] -> listeden sildiğimizde etkilenmiyor.
 		
+		Set<Integer> set3 = new HashSet<>();
+		System.out.println(set3.add(10)); // true
+		System.out.println(set3.add(20)); // true
+		System.out.println(set3.add(null)); // true
+		System.out.println(set3.add(10)); // false
+		
+		Set<StringBuilder> set4 = new HashSet<>();
+		StringBuilder sb = new StringBuilder("me");
+		StringBuilder sb2 = new StringBuilder("me");
+		
+		System.out.println(set4.add(sb)); // true
+		System.out.println(set4.add(sb2)); // true çünkü StringBuilder equals() metotunu override etmemiştir.
+		System.out.println(set4.remove(new StringBuilder("me"))); // false
+		System.out.println(set4.remove(sb)); // true
+		
+		Queue<Integer> queue = new LinkedList<>();
+		queue.offer(10); // eğer queue doluysa false döndürür.
+		queue.add(15); // eğer queue doluysa exception fırlatır.
+		queue.remove(); // 10 // eğer queue boşsa exception fırlatır.
+		queue.poll(); // 15 // eğer queue boşsa null döndürür.
+		
+		// metotların mantığı queue ile aynı
+		Deque<Integer> deque = new ArrayDeque<>();
+		deque.add(3); // [3]
+		deque.addFirst(4); // [4,3]
+		deque.addLast(5); // [4,3,5]
+		deque.peek(); // 4
+		deque.peekFirst(); // 4
+		deque.peekLast(); // 5
+		deque.poll(); // 4 
+		deque.remove(); // 3
+		deque.pollLast(); // 5
+		deque.offerLast(6); // [6]
+		deque.offer(4); // [4,6]
+		
+		Stack<Integer> stack = new Stack<>();
+		stack.push(2);
+		stack.add(5);
+		stack.peek(); // 5
+		stack.pop(); // 5
 	}
 }
