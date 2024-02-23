@@ -10,6 +10,8 @@ public class Optionals {
 		
 		opt.isPresent(); // empty ise false değilse true
 		
+		opt.ifPresent(System.out::println); // empty değilse yazdırır.
+		
 		opt.orElse(s); // empty ise s değilse kendi değerini döner.
 		
 		opt.orElseGet(() -> 3);
