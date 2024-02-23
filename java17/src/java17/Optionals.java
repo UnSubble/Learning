@@ -1,6 +1,7 @@
 package java17;
 
 import java.util.Optional;
+import java.util.OptionalInt;
 
 public class Optionals {
 	public static void main(String[] args) {
@@ -21,5 +22,7 @@ public class Optionals {
 		opt.orElseThrow(IllegalStateException::new);
 		
 		opt.or(Optional::empty); // empty ise Optional.empty() döner değilse kendi değerini döner.
+		
+		// OptionalInt gibi primitive tipler için de türevleri vardır.
 	}
 }
