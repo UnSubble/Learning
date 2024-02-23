@@ -60,6 +60,9 @@ public class Generics {
 		List<? super IOException> io4 = new ArrayList<>(); // List<? super IOException> io4 = 
 														   // 				 new ArrayList<IOException>();
 		// List<? super IOException> io2 = new ArrayList<FileNotFoundException>(); // DOES NOT COMPILE
+		
+		// List<String> list = new ArrayList<? extends String>(); // sağ tarafta bounded generic olamaz.
+		
 	}
 }
 
