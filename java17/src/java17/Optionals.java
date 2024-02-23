@@ -1,7 +1,6 @@
 package java17;
 
 import java.util.Optional;
-import java.util.OptionalInt;
 
 public class Optionals {
 	public static void main(String[] args) {
@@ -24,5 +23,9 @@ public class Optionals {
 		opt.or(Optional::empty); // empty ise Optional.empty() döner değilse kendi değerini döner.
 		
 		// OptionalInt gibi primitive tipler için de türevleri vardır.
+		
+		Optional<Integer> threeDigit = Optional.of(100);
+		threeDigit.map(String::valueOf).filter(x -> x.length() == 3).ifPresent(System.out::println);
+		
 	}
 }
