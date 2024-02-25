@@ -30,7 +30,7 @@ public class Modules {
 		//     uses com.unsubble.main.Main;   // java.util.ServiceLocater kullanmak için
 		//     provides com.unsubble.main.Main with com.unsubble.proje1.MainImpl; //java.util.ServiceProvider
 		// }																		// kullanmak için
-		// pckg2'da yazılı örnek var.
+		// ModuleSample yazılı örnek var.
 		
 		// open module com.unsubble.proje1 {
 		// }
