@@ -1,5 +1,9 @@
 package java17;
 
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -37,5 +41,15 @@ public class ParallelStreams {
 		// paralel stream'ler reduce metotu ile 3. parametre olmadan toplama işlemi yaptığında doğru sonuç 
 		// verir ancak çıkartma işlemi yaparsa yanlış sonuç verebilmektedir. Buna PROBLEMATIC ACCUMULATOR
 																								  // denir.
+		
+		Set<Character> set = Stream.of('w', 'o', 'l', 'f').collect(TreeSet::new, 
+				(x, y) -> x.add(y), (x, y) -> {System.out.println("paralel olmadıkça çalışmaz"); 
+												x.addAll(y);});
+		System.out.println(set);
+		
+		Set<Character> set2 = Stream.of('w', 'o', 'l', 'f').parallel().collect(TreeSet::new,
+				(x,y) -> x.add(y), (x,y) -> x.addAll(y)); // burada 3. parametre de çalışır.
+		System.out.println(set2);
+	
 	}
 }
