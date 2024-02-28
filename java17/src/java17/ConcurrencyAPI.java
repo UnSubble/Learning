@@ -77,8 +77,8 @@ public class ConcurrencyAPI {
 			service1.awaitTermination(1, TimeUnit.MINUTES); // tüm görevleri tamamlamak için beklenmesi 
 		} catch (InterruptedException e) {					// gereken süreyi belirtir. Eğer görevler tamam-
 			Thread.currentThread().interrupt();				// lanmışsa veya InterruptedException fırlatıl- 
-		}													// mışsa bekleme sonlanır.
-		System.out.println("done");
+		}													// mışsa bekleme sonlanır. Yoksa çalışmayı 
+		System.out.println("done");							// kendisi bitirir.
 		
 		
 		// ScheduledExecutorService interface metotları:
