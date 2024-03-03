@@ -146,7 +146,9 @@ public class StatementsAndResultSet {
 	
 	static void commitExample(String url, String sql) throws SQLException {
 		try (Connection conn = DriverManager.getConnection(url)) {
-			conn.setAutoCommit(false); // varsayılan olarak true
+			conn.setAutoCommit(false); // varsayılan olarak true // kapattığımız zaman manuel commitleyene
+																 // kadar hiçbir değer veritabanına kayde-
+																 // dilmez.
 			
 			var elephant = conn.prepareStatement(sql).execute();
 			var zebra = conn.prepareStatement(sql).execute();
