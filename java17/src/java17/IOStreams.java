@@ -166,4 +166,23 @@ public class IOStreams {
 		str.close();							 // ise hepsini aynı anda kaydettiği için memory sıkıntısı 
 												 // açığa çıkar.
 	}
+	
+	static void readData(InputStream is) throws IOException { // Dosyada ABCD yazarsa:
+		System.out.println((char) is.read()); // A
+		if (is.markSupported()) { // bütün sınıflar desteklemez.
+			is.mark(100);
+			System.out.println((char) is.read()); // B
+			System.out.println((char) is.read()); // C
+			is.reset();
+		}
+		System.out.println((char) is.read()); // B
+		System.out.println((char) is.read()); // C
+		System.out.println((char) is.read()); // D
+	}
+	
+	static void readData2(InputStream is) throws IOException { // Dosyada ABCD yazarsa:
+		System.out.println((char) is.read()); // A
+		is.skip(2); // B ve C'yi geçer.
+		System.out.println((char) is.read()); // D
+	}
 }
