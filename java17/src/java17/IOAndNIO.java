@@ -9,6 +9,8 @@ import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.stream.Stream;
 
 public class IOAndNIO {
@@ -232,7 +234,30 @@ public class IOAndNIO {
                               Path.of("non-exists/missig-file2.xml"))); // eğer içeriği aynıysa, -1 
 																		// farklıysa farklılığın ilk 
 																		// oluştuğu yerin index'ini verir.
-		} 
+		
+		Path p11 = Paths.get("extras.txt");
+		System.out.println(Files.isHidden(p11)); // throws IOException
+		System.out.println(Files.isReadable(p11)); // hiçbir şey fırlatmaz.
+		System.out.println(Files.isWritable(p11)); // hiçbir şey fırlatmaz.
+		System.out.println(Files.isExecutable(p11)); // hiçbir şey fırlatmaz.
+		
+		// Attributes Interface View Interface          Description
+		// BasicFileAttributes  BasicFileAttributeView  Bütün sistem dosyaları için desteklenen özellik-
+													 // lerin kümesidir.
+		
+		// DosFileAttributes    DosFileAttributeView    DOS/Windows sistemleri tarafından desteklenen
+													 // dosyaların özellikler kümesidir.
+		
+		// PosixFileAttributes  PosixFileAttributeView  POSIX(Unix, Linux, Mac vb.) sistemleri tara-
+													 // fından desteklenen dosyaların özellikler kümesidir.
+		
+		BasicFileAttributes data = Files.readAttributes(p11, BasicFileAttributes.class);
+		System.out.println(data.isRegularFile());
+		System.out.println(data.lastAccessTime());
+		
+		BasicFileAttributeView data2 = Files.getFileAttributeView(p11, BasicFileAttributeView.class);
+		BasicFileAttributes to = data2.readAttributes();
+		}  
 	}
 	
 	public static void copyPath(Path source, Path target) {
@@ -245,5 +270,11 @@ public class IOAndNIO {
 			}
 		} catch (IOException e) {
 		}
+	}
+	
+	public static void find(Path start) throws IOException {
+		Stream<Path> str = Files.walk(start);
+		str.forEach(System.out::print);
+		str.close();
 	}
 }
