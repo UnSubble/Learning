@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
+  <display-name>Lesson2</display-name>
+  <servlet>
+  	<servlet-name>Main</servlet-name>
+  	<servlet-class>handle.request.ServletLifeCycle</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>ConfigHandle</servlet-name>
+  	<servlet-class>handle.request.ConfigServlet</servlet-class>
+  	
+  	<init-param>
+  	  <description>Bu bir açıklama satırı(yorum satırı ile aynı işi yapıyor fakat parametreler için)</description>
+  	  <param-name>username</param-name>
+  	  <param-value>admin</param-value>
+  	</init-param>
+  	
+  	<init-param>
+  	  <param-name>password</param-name>
+  	  <param-value>123456</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Main</servlet-name>
+  	<url-pattern>/main</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>ConfigHandle</servlet-name>
+  	<url-pattern>/config</url-pattern>
+  </servlet-mapping>
+  
+  <context-param>
+    <description>Bu bir açıklama satırı(yorum satırı ile aynı işi yapıyor fakat parametreler için)</description>
+  	<param-name>role</param-name>
+  	<param-value>admin</param-value>
+  </context-param>
+  
+</web-app>
