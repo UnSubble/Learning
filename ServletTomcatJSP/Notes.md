@@ -34,3 +34,24 @@ Application server -> içerisinde farklı modüllere/java ee yapılarına destek
 ### Servlet Config
 - Her servlet'e karşılık bir servletconfig objesi oluşturulur.
 - ServletConfig objesiyle web.xml dosyasında yer alan servletler için tanımlanmış init parameter bilgilerine erişim sağlayabiliriz. Bu parametrelerin okunması 1 kez yapılır.
+
+### Scope Yaşam Alanları
+- Request (Her bir farklı sekme için farklıdır.)
+- Session (Her Browser ayrı bir session'dır. Browser'ın farklı sekmeleri ise aynı session'dır.)
+- Context (Bütün proje kapsamında herhangi bir client erişim sağlayabilir.)
+
+- __Attribute__ -> bu scope'larda yaşayan eklemiş olduğumuz objelerdir.
+
+```
+Object getAttribute(String name);
+void setAttribute(String name, Object o);
+void removeAttribute(String name);
+Enumeration<String> getAttributeNames();
+```
+Bu metotlar üstteki 3 scope'taki ortak metotlardır.
+
+### Session 
+- HTTP protokolü stateless(durumsuz) bir protokoldür. Yani client server'a istekte bulunur, server isteği karşılar, bağlantı kapanır. 
+- Session aynı client için birden fazla istekte devamlılık sağlamaktadır.
+- __Session ID__: Container unique bir session id bilgisi oluşturur ve bunu response'a verir. Sonrasında ise client bir istekte bulunduğunda bu session id bilgisini server'a gönderir. Bu session id bilgisi özel header olan Cookie'ler yardımıyla taşınır.
+-  HttpSession objesi oluşturmak, unique SessionID oluşturmak, Cookie objesi oluşturmak, Cookie'yi ilgili header olarak response'a vermek vs. işlemlerden Servlet Container sorumludur.
