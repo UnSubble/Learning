@@ -55,3 +55,51 @@ Bu metotlar üstteki 3 scope'taki ortak metotlardır.
 - Session aynı client için birden fazla istekte devamlılık sağlamaktadır.
 - __Session ID__: Container unique bir session id bilgisi oluşturur ve bunu response'a verir. Sonrasında ise client bir istekte bulunduğunda bu session id bilgisini server'a gönderir. Bu session id bilgisi özel header olan Cookie'ler yardımıyla taşınır.
 -  HttpSession objesi oluşturmak, unique SessionID oluşturmak, Cookie objesi oluşturmak, Cookie'yi ilgili header olarak response'a vermek vs. işlemlerden Servlet Container sorumludur.
+
+## JSP
+__JSP__ -> Java Server Pages
+__JSF__ -> Java Server Faces
+bu 2 kavram birbirinden farklıdır ve ikisi de java ee ürünüdür.
+
+JSP = web pages
+Jsp sayfalarında java kodu yazabiliyoruz. (Aslında kendisi HTML file)
+
+###### View Layer 
+* Son kullanıcıya data'yı göster ya da son kullanıcıdan data al(form ile). Bunun dışındaki işlemleri view layer'da(JSP) yapma. 
+* En çok yanlış yapılan hareket -> veritabanına bağlanmak
+	Mvc'deki temel noktalardan bir tanesi bu katmanları ayrı tutmaktır. -> Seperation of concern
+
+ JSP dosyaları, Servlet Container tarafından Servlet sınıflarına(.java) translate edilir. Sonrasında compile edilir(.class dosyaları oluşur).
+
+JSP grameri -> JSP Scriptlet ile JSP sayfalarımızda java kodu yazabiliriz. genel formatı:
+`                             <% java code %>                                `
+JSP expression: Tarayıcıya direkt veri yazmak için kullanılır.
+`                             <%=expression %>                               `
+JSP Declaration:
+`                             <%! public int methodName() >                  `
+JSP Action:
+`                             <jsp:action_name attribute=""/>                `
+JSP Comment: Browser'da gözükmez.
+`                             <%-- --%>                                      `
+HTML Comment: Browser'da gözükür.
+`                             <!-- -->                                       `
+<%@ page
+<%@ include
+<%@ taglib
+
+#### Attribute
+- Çeşitli scope'lara bıraktığımız/eklediğimiz objelerdir.
+	- Application(Context)
+	- Session
+	- Request
+	- PageScope
+- application.setAttribute("key", object); -> JSP'de böyle attribute eklenir.
+- session.setAttribute("key", object);
+- request.setAttribute("key", object);
+- pageContext.setAttribute("key", obect); -> sadece JSP'de vardır. (Servlet'te yoktur.)
+
+
+
+
+
+
