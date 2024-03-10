@@ -98,8 +98,10 @@ HTML Comment: Browser'da gözükür.
 - request.setAttribute("key", object);
 - pageContext.setAttribute("key", obect); -> sadece JSP'de vardır. (Servlet'te yoktur.)
 
-
-
+#### Expression Language
+- ${bean.property} -> attribute'lara destek sağlar.
+- ${map.key} -> map'e destek sağlar
+- $\[\] -> bracket (bean, map, list, array'e destek sağlar.)
 
 
 
