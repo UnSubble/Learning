@@ -1,0 +1,16 @@
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web- jsptaglibrary_2_1.xsd"
+    version="2.1">
+    
+     <uri>myURI</uri>
+     <tlib-version>2.1</tlib-version>
+     <function>
+     	<name>myFunction</name>
+     	<function-class>expression.language.function.ELFunction</function-class>
+     	<function-signature>
+     		int sumNumber(int , int)
+     	</function-signature>
+     </function>
+     
+</taglib>
