@@ -1,0 +1,42 @@
+<html>
+<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+
+<script src="js/ajaxQueryJSON.js" type="text/javascript"></script>
+
+<body>
+	<form id="form1" action="person.servlet" method="post">
+		<div>
+		</div>
+		<table id="table1" cellspacing="5px" cellpadding="5%" ;>
+			<tr>
+				<td align="right">Isim:</td>
+				<td><input type="text" name="firstName" id="firstName" /></td>
+			</tr>
+			<tr>
+				<td align="right">Soy Isim:</td>
+				<td><input type="text" name="lastName" id="lastName" /></td>
+			</tr>
+			<tr>
+				<td align="right">Cinsiyet</td>
+				<td>
+					<select name="gender" id="gender">
+						<option value="Bay" selected="selected">Bay</option>
+						<option value="Bayan">Bayan</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<input type="button" value="Onayla" onclick="sendAjaxQueryJSON()" />
+				</td>
+			</tr>
+		</table>
+	</form>
+
+
+	<strong>Ajax Response</strong>:
+	<div id="ajaxGetUserServletResponse"></div>
+</body>
+
+</html>
