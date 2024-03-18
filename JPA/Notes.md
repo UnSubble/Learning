@@ -45,3 +45,19 @@ EntityManager tarafından yönetilen/managed edilen tüm Entity obje kümesine P
 *persistence.xml dosyasında konfigürasyon bilgilerimiz yer alacak.*
 PersistenceUnit -> Entity classlarının belirtildiği, veri tabanı bilgilerinin yer aldığı konfigürasyon bilgisidir.  **src** klasörü altındaki #META-INF klasörü altında yer almalıdır.
 
+
+# !!!
+- Annotation'ları ilgili property veya property getter'ının üzerine koyabiliriz. Setter'a koymak mantıksız ve anlamsız olacaktır.
+- Enum'lar kaydedilirken ordinal sırasına göre kaydedilirler. Bunu değiştirmek için `@Enumarated` annotation'ını kullanırız.
+- primary key'i autoincrement yapmak için -> AUTO, TABLE, SEQUENCE, IDENTITY yaklaşımları kullanılabilir. (`@GeneratedValue` annotation'ı ile)
+	- `@GeneratedValue(strategy = GenerationType.AUTO)` -> SEQUENCE adında tablo oluşur. Kolonları SEQ_NAME ve SEQ_COUNT şeklindedir. Satırı da default allocation 50 şeklindedir.
+	- `@GeneratedValue(strategy = GenerationType.TABLE)` -> SEQUENCE adında tablo oluşur. Satırı SEQ_GEN_TABLE şeklindedir.
+	- `@GeneratedValue(strategy = GenerationType.SEQUENCE)` -> Her veri tabanında yoktur. Bunun yerine AUTOINCREMENT kavramı olabilir. 
+	- `@GeneratedValue(strategy = GenerationType.IDENTITY)` -> Auto increment'tir.
+- Bir Entity Relationship için:
+	1. Role -> bir ilişkide 2 tarafın varlığı gerekmektedir. Her ilişki için 2 tane Entity vardır.
+	2. Directionality -> Unitdirectional(bir ilişkide, 2 entity'den sadece birisi diğerini gösteriyorsa/point ediyorsa bu durumda unidirectional'dır) veya BiDirectional(birbirlerini gösteriyorsa bidirectional'dır)
+	3. Cardinality -> (kelime anlamı: önemli, asıl, nicelik) Bir Employee sadece 1 departmanda çalışabilir. 1 departmanda N tane employee olabilir (One to one -> `@OneToOne`). /// 1 Employee N tane projede çalışabilir. 1 projede N tane employee olabilir. (Many to one -> `@ManyToOne`) /// (`@ManyToMany`) /// (`@OneToMany`)
+	4. Ordinality/Optionality -> Zorunlu/mandotary ya da seçimli/optional olup olmaması ile ilgili bir kavramdır.
+	
+
