@@ -8,7 +8,7 @@
 		<class>com.unsubble.domain.Employee</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:sqlite:C:/Users/user/Desktop/projects/Learning/JPA/Lesson1/database.db" />
+				value="jdbc:sqlite:database.db" />
 			<property name="javax.persistence.jdbc.driver"
 				value="org.sqlite.JDBC" />
 			<property name="javax.persistence.jdbc.user" value="" />
