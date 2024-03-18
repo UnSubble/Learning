@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="EmployeeManagement"
+		transaction-type="RESOURCE_LOCAL">
+		<class>com.unsubble.entity.Employee</class>
+		<class>com.unsubble.entity.Department</class>
+		<class>com.unsubble.entity.ParkingSpace</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:sqlite:database.db" />
+			<property name="javax.persistence.jdbc.driver"
+				value="org.sqlite.JDBC" />
+			<property name="javax.persistence.jdbc.user" value="" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="eclipselink.ddl-generation"
+				value="drop-and-create-tables" />
+		</properties>
+	</persistence-unit>
+</persistence>
