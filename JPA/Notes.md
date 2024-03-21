@@ -56,8 +56,10 @@ PersistenceUnit -> Entity classlarının belirtildiği, veri tabanı bilgilerini
 	- `@GeneratedValue(strategy = GenerationType.IDENTITY)` -> Auto increment'tir.
 - Bir Entity Relationship için:
 	1. Role -> bir ilişkide 2 tarafın varlığı gerekmektedir. Her ilişki için 2 tane Entity vardır.
-	2. Directionality -> Unitdirectional(bir ilişkide, 2 entity'den sadece birisi diğerini gösteriyorsa/point ediyorsa bu durumda unidirectional'dır) veya BiDirectional(birbirlerini gösteriyorsa bidirectional'dır)
+	2. Directionality -> Unidirectional(bir ilişkide, 2 entity'den sadece birisi diğerini gösteriyorsa/point ediyorsa bu durumda unidirectional'dır) veya BiDirectional(birbirlerini gösteriyorsa bidirectional'dır)
 	3. Cardinality -> (kelime anlamı: önemli, asıl, nicelik) Bir Employee sadece 1 departmanda çalışabilir. 1 departmanda N tane employee olabilir (One to one -> `@OneToOne`). /// 1 Employee N tane projede çalışabilir. 1 projede N tane employee olabilir. (Many to one -> `@ManyToOne`) /// (`@ManyToMany`) /// (`@OneToMany`)
 	4. Ordinality/Optionality -> Zorunlu/mandotary ya da seçimli/optional olup olmaması ile ilgili bir kavramdır.
-	
-
+	 - Birbiri ile ilişkili iki değerin ikisinde de `@OneToOne` kullanırsak hala unidirectional olur. Birbiriyle ilişkisel yapmak için `@OneToOne(mappedBy = "İLİŞKİLİ_OLDUĞU_DEĞİŞKEN")` kullanmamız gerekir. İşte o zaman bidirectional bir ilişki olmuş olur. İlişkinin sahibi(owning side) mappedBy yazmadığımız taraftır. mappedBy'ın foreign key'i burada yer alır. Karşı taraf(inverse side) mappedBy yazdığımız taraftır. Burada ekstra column oluşmaz.
+	 - `@ManyToMany` veya `@OneToMany` ilişkilerde colloction vermemiz lazım. Çünkü tek bir single object yetmez.  Ayrıca yine mappedBy kullanmazsak unidirectional olur.
+- `@Embeddable` embedded obje oluşturur. Bu objeler için entity tag'ı kullanılmaz. Aynı zamanda primary key olmadığı için `@Id` de kullanılmaz. Embedded objeler başka entity'lere gömülüyor.
+- DAO katmanında sadece veri tabanına bağlanılır. Service katmanında ise bu bağlantıdan önce yapılacak olan kontroller yapılır.
