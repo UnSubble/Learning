@@ -63,3 +63,10 @@ PersistenceUnit -> Entity classlarının belirtildiği, veri tabanı bilgilerini
 	 - `@ManyToMany` veya `@OneToMany` ilişkilerde colloction vermemiz lazım. Çünkü tek bir single object yetmez.  Ayrıca yine mappedBy kullanmazsak unidirectional olur.
 - `@Embeddable` embedded obje oluşturur. Bu objeler için entity tag'ı kullanılmaz. Aynı zamanda primary key olmadığı için `@Id` de kullanılmaz. Embedded objeler başka entity'lere gömülüyor.
 - DAO katmanında sadece veri tabanına bağlanılır. Service katmanında ise bu bağlantıdan önce yapılacak olan kontroller yapılır.
+
+## JPQL
+Java Persistence Query Language
+- SQL'e benzer fakat bazı noktalarda farklılıklar vardır.
+-  En basit JPQL sordusu:
+	`SELECT e from Employee e` -> burada Employee entity'nin kendisi.
+	
