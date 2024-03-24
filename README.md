@@ -16,5 +16,15 @@ Welcome to my learning repository! Here, I share the things I've learned about J
 - Overview of JavaScript basics.
 - Introduction to modern JavaScript features.
 
+## Java Servlets
+- [Link to Servlets](https://docs.oracle.com/javaee%2F7%2Fapi%2F%2F/javax/servlet/Servlet.html)
+
+## Java JSP
+- [Link to JSP](https://docs.oracle.com/javaee/5/tutorial/doc/bnajo.html)
+
+## JPA with EclipseLink
+- [Link to JPA](https://docs.oracle.com/javaee/6/tutorial/doc/bnbpz.html)
+- [Link to EclipseLink](https://wiki.eclipse.org/EclipseLink)
+
 ## License
 This project is licensed under the [MIT License](LICENSE).
