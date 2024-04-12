@@ -1,5 +1,7 @@
 package com.unsubble._03;
 
+import java.time.LocalDate;
+
 import lombok.Data;
 
 @Data
@@ -10,5 +12,8 @@ public class Semester {
 
 	public enum Term {
 		FALL, SPRING, SUMMER
+	}
+	
+	public Semester(LocalDate localDate) {
 	}
 }

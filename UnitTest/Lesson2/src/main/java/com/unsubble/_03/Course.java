@@ -1,6 +1,7 @@
 package com.unsubble._03;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
 public class Course {
@@ -15,6 +16,10 @@ public class Course {
 	public enum CourseType {
 		MANDATORY,
 		ELECTIVE
+	}
+	
+	public Course(String name) {
+		this.name = name;
 	}
 	
 }
