@@ -141,3 +141,64 @@
 -- SELECT TIME_SUB(birthtime, INTERVAL 3 hour) from people;
 
 -- SELECT NOW() - INTERVAL 21 YEAR
+
+-- CREATE TABLE captions(text varchar(150),
+-- created_at DATETIME default CURRENT_TIMESTAMP, updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP) -> update ile satırın herhangi bir column'unu değiştirdiğimizde otomatik olarak updated_at 
+																																								-- column'u da güncellenir.
+
+-- SELECT title, author_fname, author_lname FROM books WHERE author_fname NOT LIKE '%da%';
+
+-- SELECT * FROM books WHERE author_lname='Eggers' AND released_year > 2010;
+-- SELECT * FROM books WHERE author_lname='Eggers' && released_year > 2010;
+
+-- SELECT * FROM books WHERE author_lname='Eggers' OR released_year > 2010;
+-- SELECT * FROM books WHERE author_lname='Eggers' || released_year > 2010;
+
+-- SELECT * FROM books WHERE  released_year BETWEEN 2000 AND 2015;
+-- SELECT * FROM books WHERE  released_year NOT BETWEEN 2000 AND 2015;
+
+-- SELECT * FROM people WHERE birthdate < '2005-01-01';
+-- SELECT CAST('09:00:00' AS TIME);
+
+-- SELECT title, author_lname FROM books WHERE author_lname IN ('Carver', 'Lahiri', 'Smith');
+-- SELECT title, author_lname FROM books WHERE author_lname NOT IN ('Carver', 'Lahiri', 'Smith');
+
+-- SELECT title, released_year, CASE
+--					WHEN released_year >= 2000 THEN 'Modern Lit'
+--                    ELSE '20th Century Lit'
+--				END 
+--               as GENRE
+--			FROM books;
+
+-- SELECT * FROM books WHERE author_lname IS NULL;
+-- SELECT * FROM books WHERE author_lname IS NOT NULL;
+
+-- CREATE TABLE contacts(name VARCHAR(45) NOT NULL, phone VARCHAR(15) NOT NULL UNIQUE);
+
+-- CREATE TABLE partiers(name VARCHAR(45), age INT CHECK (age > 18));
+
+-- CREATE TABLE partiers2(name VARCHAR(45), age INT, CONSTRAINT age_over_18 CHECK (age > 18));
+
+-- CREATE TABLE companies(supplier_id INT AUTO_INCREMENT, name VARCHAR(45) NOT NULL, address VARCHAR(255) NOT NULL, PRIMARY KEY(supplier_id) CONSTRAINT name_address UNIQUE (name, address));
+
+-- CREATE TABLE houses(purchase_price INT NOT NULL, sale_price INT NOT NULL, CONSTRAINT sprice_gt_pprice CHECK(sale_price >= purchase_price));
+
+-- ALTER TABLE companies ADD COLUMN city VARCHAR(25);
+
+-- ALTER TABLE companies RENAME COLUMN name TO biz_name;
+
+-- ALTER TABLE companies DROP COLUMN city;
+-- ALTER TABLE companies DROP city;
+
+-- ALTER TABLE companies RENAME TO companies;
+-- RENAME TABLE companies TO suppliers;
+
+-- ALTER TABLE suppliers MODIFY biz_name VARCHAR(100);
+-- ALTER TABLE suppliers MODIFY biz_name VARCHAR(100) DEFAULT 'unkown';
+
+-- ALTER TABLE suppliers CHANGE biz_name name VARCHAR(50) NOT NULL;
+
+-- ALTER TABLE houses ADD CONSTRAINT 'positive_pprice' CHECK (purchase_price >= 0);
+
+-- ALTER TABLE houses DROP CONSTRAINT positive_pprice; -> constraint'i siler.
+
