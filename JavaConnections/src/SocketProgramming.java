@@ -6,16 +6,11 @@ import java.net.Socket;
 
 public class SocketProgramming {
     public static void main(String[] args) throws IOException {
-        ServerSocket ss = new ServerSocket(6666);
-        Socket socket = ss.accept();
-        DataInputStream inputStream = new DataInputStream(socket.getInputStream());
-        String str = inputStream.readUTF();
-        inputStream.close();
-        ss.close();
+
     }
 }
 
-class Client {
+class ClientDemo {
     public void connect() throws IOException {
         Socket socket = new Socket("localhost", 6666);
         DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
@@ -23,6 +18,17 @@ class Client {
         outputStream.flush();
         outputStream.close();
         socket.close();
+    }
+}
+
+class ServerDemo {
+    public void connect() throws IOException {
+        ServerSocket ss = new ServerSocket(6666);
+        Socket socket = ss.accept();
+        DataInputStream inputStream = new DataInputStream(socket.getInputStream());
+        String str = inputStream.readUTF();
+        inputStream.close();
+        ss.close();
     }
 }
 
