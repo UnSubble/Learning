@@ -17,7 +17,7 @@ public class ResponseDownloadServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setHeader("Content-Disposition", "attachment; filename=test.xlxsx");
+		resp.setHeader("Content-Disposition", "attachment; filename=test.xlsx");
 		ServletOutputStream out = resp.getOutputStream();
 		try (InputStream in = getServletContext().getResourceAsStream("myExcel.xlsx")) {
 			byte[] content = new byte[1024];
