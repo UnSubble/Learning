@@ -16,6 +16,8 @@ type IProductRepository interface {
 	GetAllProductsByStore(storeName string) []domain.Product
 	AddProduct(product *domain.Product) error
 	GetById(id int) (domain.Product, error)
+	DeleteById(id int) error
+	UpdatePrice(id int, newPrice float32) error
 }
 
 type ProductRepository struct {
@@ -101,6 +103,48 @@ func (productRepository *ProductRepository) GetById(id int) (domain.Product, err
 	}, nil
 }
 
+func (productRepository *ProductRepository) DeleteById(id int) error {
+	exist, err := isExists(id, productRepository)
+
+	if !exist {
+		return err
+	}
+
+	ctx := context.Background()
+
+	query := `DELETE FROM products WHERE id = $1`
+
+	_, err = productRepository.dbConn.ExecContext(ctx, query, id)
+
+	if err != nil {
+		log.Error("An error occured while deleting product by id %v\n", err)
+		return err
+	}
+
+	return nil
+}
+
+func (productRepository *ProductRepository) UpdatePrice(id int, newPrice float32) error {
+	exist, err := isExists(id, productRepository)
+
+	if !exist {
+		return err
+	}
+
+	ctx := context.Background()
+
+	query := `UPDATE products SET price = $1 WHERE id = $2`
+
+	_, err = productRepository.dbConn.ExecContext(ctx, query, newPrice, id)
+
+	if err != nil {
+		log.Error(fmt.Sprintf("An error occured while updating product price with id! %v\n", err))
+		return err
+	}
+
+	return nil
+}
+
 func extractProductsFromRows(rows *sql.Rows) []domain.Product {
 	var products = []domain.Product{}
 
@@ -117,4 +161,15 @@ func extractProductsFromRows(rows *sql.Rows) []domain.Product {
 	}
 
 	return products
+}
+
+func isExists(id int, productRepository *ProductRepository) (bool, error) {
+	_, err := productRepository.GetById(id)
+
+	if err != nil {
+		log.Error("Product not found!")
+		return false, errors.New("Product not found!")
+	}
+
+	return true, nil
 }

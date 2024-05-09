@@ -168,3 +168,82 @@ func TestGetProductById(t *testing.T) {
 
 	clear(ctx, conn)
 }
+
+func TestDeleteById(t *testing.T) {
+	setup(ctx, conn)
+
+	expectedProducts := []domain.Product{
+		{
+			Id:       1,
+			Name:     "AirFryer",
+			Price:    3000.0,
+			Discount: 22.0,
+			Store:    "ABC TECH",
+		},
+		{
+			Id:       2,
+			Name:     "Ütü",
+			Price:    1500.0,
+			Discount: 10.0,
+			Store:    "ABC TECH",
+		},
+		{
+			Id:       3,
+			Name:     "Çamaşır Makinesi",
+			Price:    10000.0,
+			Discount: 15.0,
+			Store:    "ABC TECH",
+		},
+	}
+
+	t.Run("TestDeleteById", func(t *testing.T) {
+		_ = productRepository.DeleteById(4)
+		actualProducts := productRepository.GetAllProducts()
+		assert.Equal(t, expectedProducts, actualProducts)
+	})
+
+	clear(ctx, conn)
+}
+
+func TestUpdateProductPriceById(t *testing.T) {
+	setup(ctx, conn)
+
+	expectedProducts := []domain.Product{
+		{
+			Id:       1,
+			Name:     "AirFryer",
+			Price:    15000.0,
+			Discount: 22.0,
+			Store:    "ABC TECH",
+		},
+		{
+			Id:       2,
+			Name:     "Ütü",
+			Price:    1500.0,
+			Discount: 10.0,
+			Store:    "ABC TECH",
+		},
+		{
+			Id:       3,
+			Name:     "Çamaşır Makinesi",
+			Price:    10000.0,
+			Discount: 15.0,
+			Store:    "ABC TECH",
+		},
+		{
+			Id:       4,
+			Name:     "Lambader",
+			Price:    2000.0,
+			Discount: 0.0,
+			Store:    "Dekorasyon Sarayı",
+		},
+	}
+
+	t.Run("TestUpdateProducctPriceById", func(t *testing.T) {
+		_ = productRepository.UpdatePrice(1, 15000.0)
+		actualProducts := productRepository.GetAllProducts()
+		assert.Equal(t, expectedProducts, actualProducts)
+	})
+
+	clear(ctx, conn)
+}
