@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.unsubble.lesson4.HelloController"
+      prefHeight="400.0" prefWidth="600.0">
+    <padding>
+        <Insets top="100" left="80" />
+    </padding>
+    <Label text="username: " />
+    <TextField text="username" fx:id="ltext" />
+    <Button text="Login" onAction="#tryLogin" />
+</VBox>
