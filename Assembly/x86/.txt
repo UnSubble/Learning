@@ -1,0 +1,2 @@
+nasm -f elf -o _01.o _01.asm
+ld -m elf_i386 -o _01 _01.o
