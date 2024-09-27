@@ -103,13 +103,13 @@ __`docker image build -t [ORG/REPO] -f [Dockerfile_PATH]` ->__ Dockerfile dosyas
 
 __`docker image build -t [ORG/REPO]` ->__ üstteki kısa hali.
 
-__`docker image build -t [ORG/REPO] -f [Dockerfile_PATH] [SRC_PATH]` ->__ src path de root klasörü belirtmeye yarar. Örneğin kopyalama işleminde /app location'ını default root'ta arar. Fakat path olarak `.` girdiğimizde ./app location'ınında arama yapar.
+__`docker image build -t [ORG/REPO] -f [Dockerfile_PATH] [SRC_PATH]` ->__ src path root klasörü belirtmeye yarar. Örneğin kopyalama işleminde /app location'ını default root'ta arar. Fakat path olarak `.` girdiğimizde ./app location'ınında arama yapar.
 
 ## Dockerfile
 
 __`FROM [IMAGE]:[TAG]`->__ hangi image'den image oluşturulacağını belirten komuttur.
 
-__`RUN [COMMAND]`->__ shell'de çalıştırılacak komut için kullanılır.
+__`RUN [COMMAND]`->__ shell'de çalıştırılacak komut için kullanılır. (image sırasında)
 
 __`WORKDIR [DIR_PATH]`->__ tıpkı cd komutu gibidir ama klasör yoksa oluşturur ve gider.
 
@@ -117,9 +117,24 @@ __`COPY [SOURCE] [TARGET]`->__ kaynağı hedefe kopyalar.
 
 __`EXPOSE [PORT]`->__ bu image'den oluşturulacak container'ların hangi portlar üstünden erişilebileceğini belirtir.
 
-__`CMD [COMMAND]`->__ image'den container yarratıldığı zaman çalıştırılacak komut bununla belirtilir.
+__`CMD [COMMAND]`->__ image'den container yarratıldığı zaman çalıştırılacak komut bununla belirtilir. (Komutumuzu `["ARG1", "ARG2", "ARG3", ...]` şeklinde girersek env variable'larını vb. durumları okuyamayız. Bu durumlarda `CMD ARG1 ARG2 ARG3 ...` şeklinde girmek gerekir.)
 
 __`HEALTHCHECK [COMMAND]`->__ bu komut docker'a bir container'ın hala çalışıp çalışmadığını kontrol ettirir.
 
-__`ADD [SOURCE]`->__ image'de bulunduğumuz dizine source'taki dosyaları eklememizi sağlar.
+__`ADD [SOURCE]`->__ image'de bulunduğumuz dizine source'taki dosyaları eklememizi sağlar. (ADD'in COPY'den farkı copy sadece local'de çalışabiliyorken add ile uzaktaki bir yerden kopyalama yapılabilir, ayrıca ADD .tar.gz sıkıştırılmış dosyaları açarak kopyalar.)
+
+__`LABEL [VAR]="[VALUE]"`->__  sadece dockerfile içinde değişken üretmek için kullanılır. `$[VAR]` şeklinde kullanılır.
+
+__`ENV [VAR]="[VALUE]"`->__ environment variable oluşturur.
+
+__`HEALTHCHECK --interval=[DURATION] --timeout=[DURATION] --start-period=[DURATION] --retries=[COUNT] [COMMAND]`->__ interval: tekrar aralığını belirtir, timeout: cevabı bekleme süresi, start-period: başlangıç zaman aşımı. `command`'i de genellikle `|| exit 1` ile veririz.
+
+__`ENTRYPOINT [COMMAND]`->__ CMD ile aynı işi yapar. Tek farkı container oluştururken çalışma şeklini override edemeyiz. İkisini de aynı anda kullanırsak CMD'yi ENTRYPOINT'in parametresi olarak alır. (ÖRN:```
+			 ENTRYPOINT ["ping"]
+			 CMD ["127.0.0.1"]```  
+-> kısaca ping 127.0.0.1 çalışır. Bunu böyle yapmamızın sebebi ise container oluştururken CMD'yi ezerek ENTRYPOINT'e parametre gönderebilmektir.)
+
+
+
+
 
