@@ -134,6 +134,7 @@ __`ENTRYPOINT [COMMAND]`->__ CMD ile aynı işi yapar. Tek farkı container olu�
 			 CMD ["127.0.0.1"]```  
 -> kısaca ping 127.0.0.1 çalışır. Bunu böyle yapmamızın sebebi ise container oluştururken CMD'yi ezerek ENTRYPOINT'e parametre gönderebilmektir.)
 
+__`ARG [VAR]`->__ image oluştururken argument girmemizi sağlar. `${VAR}` şeklinde kullanılabilir. (Örn: `docker image build -t [NAME] --build-arg [VAR]=[VALUE]`)
 
 
 
