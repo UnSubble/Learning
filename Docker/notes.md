@@ -127,7 +127,7 @@ __`LABEL [VAR]="[VALUE]"`->__  sadece dockerfile içinde değişken üretmek iç
 
 __`ENV [VAR]="[VALUE]"`->__ environment variable oluşturur.
 
-__`HEALTHCHECK --interval=[DURATION] --timeout=[DURATION] --start-period=[DURATION] --retries=[COUNT] [COMMAND]`->__ interval: tekrar aralığını belirtir, timeout: cevabı bekleme süresi, start-period: başlangıç zaman aşımı. `command`'i de genellikle `|| exit 1` ile veririz.
+__`HEALTHCHECK --interval=[DURATION] --timeout=[DURATION] --start-period=[DURATION] --retries=[COUNT] CMD [COMMAND]`->__ interval: tekrar aralığını belirtir, timeout: cevabı bekleme süresi, start-period: başlangıç zaman aşımı. `command`'i de genellikle `|| exit 1` ile veririz.
 
 __`ENTRYPOINT [COMMAND]`->__ CMD ile aynı işi yapar. Tek farkı container oluştururken çalışma şeklini override edemeyiz. İkisini de aynı anda kullanırsak CMD'yi ENTRYPOINT'in parametresi olarak alır. (ÖRN:```
 			 ENTRYPOINT ["ping"]
@@ -137,5 +137,60 @@ __`ENTRYPOINT [COMMAND]`->__ CMD ile aynı işi yapar. Tek farkı container olu�
 __`ARG [VAR]`->__ image oluştururken argument girmemizi sağlar. `${VAR}` şeklinde kullanılabilir. (Örn: `docker image build -t [NAME] --build-arg [VAR]=[VALUE]`)
 
 
+## Docker Compose
+- Image ve container'ları otomatize etmek için kullanılır.
+- `Docker-compose.yml` veya `Docker-compose.yaml` dosyaları kullanılır.
 
+__`docker-compose up` ->__ Otomatize ettiğimiz config'deki her şeyi yaratır ve çalıştırır.
 
+__`docker-compose down` ->__ Otomatize ettiğimiz config'deki her şeyi siler.
+
+__`docker-compose config` ->__ Aşağıdan yukarıya config dosyasının içeriğini gösterir.
+
+#### Docker-compose.yaml 
+
+__`version: "[VERSION]"` ->__ compose'un versiyonunu belirtir.
+
+__`services:/volumes:/networks:/secrets:` ->__ top level başlıklardır.
+
+Örn:
+
+```
+services:
+	[CONTAINER_NAME]:
+		image: [IMAGE_NAME]
+		restart: always
+		volumes:
+			- [VOLUME_NAME]:[DEST_PATH]
+			- [VOLUME_NAME]:[DEST_PATH]
+			...
+		environment:
+			- [VAR]:[VALUE]
+			- [VAR]:[VALUE]
+			...
+		networks:
+			- [NETWORK_NAME]
+			- [NETWORK_NAME]
+			...
+		depends_on:
+			- [CONTAINER_NAME]
+		ports:
+			- "[PORT]:[PORT]"
+	
+	[CONTAINER_NAME]:
+		build: [SRC_PATH]
+		...	
+		
+volumes:
+	[VOLUME_NAME]:
+
+networks:
+	[NETWORK_NAME]:
+		driver: Bridge
+```
+
+- depends_on: diğer container'a bağımlı olmasını sağlıyoruz. Yani diğer container ayağa kalkmadan bu container ayağa kalkmaz. 
+
+- build: image'ı vermek yerine Dockerfile verip image build ettirmek için kullanılır. (Dockerfile'ı değil de bulunduğu dizini vermek gerekir.)
+
+- Docker-compose down komutu image ve volume'leri silmez!
