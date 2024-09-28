@@ -21,7 +21,7 @@
 
 
 ## Network Driver Names
-- bridge, none, host
+- bridge, none, host, overlay
 
 
 ## Docker CLI 101
@@ -190,7 +190,72 @@ networks:
 ```
 
 - depends_on: diğer container'a bağımlı olmasını sağlıyoruz. Yani diğer container ayağa kalkmadan bu container ayağa kalkmaz. 
-
 - build: image'ı vermek yerine Dockerfile verip image build ettirmek için kullanılır. (Dockerfile'ı değil de bulunduğu dizini vermek gerekir.)
-
 - Docker-compose down komutu image ve volume'leri silmez!
+
+## Docker Swarm
+- Manager ve worker ilişkisi vardır. Bir docker makinesi manager olarak seçilir ve diğer makinelere işler verir.
+- Manager'lar da default olarak worker'dır!
+
+__`docker swarm init --addvertise-addr [MANAGER_IP_ADDR]` ->__ swarm modu açabilmek için kullanılır.
+
+__`docker swarm join-token manager` ->__ manager node'dayken bir docker node'unu manager yapmamız için gereken komutu verir.
+
+__`docker swarm join-token worker` ->__ manager node'dayken bir docker node'unu worker yapmamız için gerek komutu verir.
+
+__`docker node ls` ->__ swarm cluster'daki node'ları listeler.
+
+__`docker service create --name [NAME] --replicas=[COUNT] [IMAGE_NAME]` ->__ bir servis oluşturur ve bu serviste replicas kadar container oluşturur. Bunları worker'lara uygun bir şekilde dağıtır. 
+
+__`docker service scale [SERVICE_NAME]=[COUNT]` ->__ replicas sayısını değiştirmemizi sağlar.
+
+__`docker service update --update-delay [DURATION] --update-parallelism [COUNT] --image [IMAGE_NAME] [NAME]` ->__ servisi kesintiye uğramadan image'ı update edebilmek için kullanılır.
+
+__`docker node rollback [NAME]` ->__ bir önceki update'i geri alır.
+
+## Docker Secret
+- Dosyaları şifrelemeye yarar.
+
+__`docker secret create [NAME] [SRC_PATH]` ->__ şifreli obje oluşturmaya yarar.
+
+__`echo [VALUE] | docker secret create [NAME] -` ->__ terminalden şifreli obje oluşturmaya yarar.
+
+__`docker service create --secret [SECRET_NAME] [NAME] [IMAGE_NAME]` ->__ servis oluştururken secret objelerimizi atamaya yarar.
+
+## Docker Stack
+- Docker compose yaml dosyasını kullanarak docker swarm servisleri yaratabiliriz. Buna docker stack denir.
+
+__`docker stack deploy -c [YAML_PATH] [NAME]` ->__ stack ile service oluşturmak için kullanılır.
+
+#### Docker-compose.yaml
+
+```
+services:
+	[CONTAINER_NAME]:
+		image: [IMAGE_NAME]
+		deploy:
+			replicas: [COUNT]
+			update_config:
+				parallelism: [COUNT]
+				delay: [DURATION]
+				order: stop-first
+		environment:
+			- [VAR]:[VALUE]
+			- [VAR]:[VALUE]
+			...
+		networks:
+			- [NETWORK_NAME]
+			- [NETWORK_NAME]
+			...
+		depends_on:
+			- [CONTAINER_NAME]
+		ports:
+			- "[PORT]:[PORT]"
+	
+	[CONTAINER_NAME]:
+		...	
+
+networks:
+	[NETWORK_NAME]:
+		driver: overlay
+```
