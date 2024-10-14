@@ -12,6 +12,8 @@ __`wget [LINK]` ->__ Direct download files from the internet.
 
 __`alias [VAR_NAME]=[CMD]` ->__ komut için kısa isimde değişken atayabiliriz.
 
+__`rev [FILE_PATH]` ->__ dosya içeriğini ters olarak bastırır.
+
 - example for `chmod`:
 	The permission mask is a three-digit octal number, where each digit represents the permissions for a level (owner, group, others). Each digit is calculated by adding the values of the relevant permissions:
 	- 4: Read
@@ -114,5 +116,17 @@ __`/usr` ->__ sistem içinde çalıştırılabilir dosyaları ve bu dosyaların 
 
 __`/var` ->__ sürekli değişen dosyaların bulunduğu dizin. (örn: .log dosyaları)
 
+__`/dev/null` ->__ trash can gibi ama içine girdiğimiz verileri hiçliğe gönderiyor.
 
 
+# Redirects(?)
+
+__`>` ->__ default olarak 1 yani stdout'tur. override işlemi yapar.
+
+__`>>` ->__ default olarak 1 yani stdout'tur. append işlemi yapar.
+
+__`2>` ->__  2 yani stderr'dir.
+
+__`<` ->__ default olarak 0 yani stdin'dir.
+
+__`2&>` ->__ 1 ve 2 yani stdout&stderr'dir. Burada 2 stream'ini 1'e yönlendiriyor.
