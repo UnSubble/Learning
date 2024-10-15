@@ -53,7 +53,7 @@ __`which [COMMAND_NAME]` ->__`which` will print the full path of the provided 
 
 __`tee [TARGET_PATH]` ->__ pipe(`|)` yerine (`T`) şeklinde çalışır. Yani hem `TARGET_PATH`'e hem de devamında gelecek olan komuta girdileri iletir. Örn:
 
-![[Screenshot from 2024-10-15 19-34-33.png]]
+<img title="tee usage example 1" src="./Screenshot from 2024-10-15 19-34-33.png">
 
 <hr>
 
