@@ -14,6 +14,8 @@ __`alias [VAR_NAME]=[CMD]` ->__ komut için kısa isimde değişken atayabiliriz
 
 __`rev [FILE_PATH]` ->__ dosya içeriğini ters olarak bastırır.
 
+__`xargs [CMD]` ->__ stdin'den girdi kabul etmeyen araçlara(`[CMD]`) girdi gönderebilmek için kullanılır.
+
 - example for `chmod`:
 	The permission mask is a three-digit octal number, where each digit represents the permissions for a level (owner, group, others). Each digit is calculated by adding the values of the relevant permissions:
 	- 4: Read
@@ -30,13 +32,16 @@ __`du [TARGET_PATH]` ->__ Shows disk usages per file in the target path.
 
 __`wc [FILE_PATH]` ->__ Prints the number of line/word/character of the target file according to the entered option.
 
-__`sed -i 's/OLD_WORD/NEW_WORD/g' FILE_PATH` ->__ Replaces the new word with all the old word of the target file.
+__`sed -i 's/OLD_WORD/NEW_WORD/g' [FILE_PATH]` ->__ Replaces the new word with all the old word of the target file.
+
+__`tr old_chars new_chars [INPUT]` ->__ eski karakterleri yenileri ile değiştirir. 
+
 
 ## File Management
 
 __`less [FILE_PATH]` ->__ When you want to view a file that is longer than one screen, you can use either the `less` utility or the more utility.
 
-__`head -n [COUNT] [FILE_PATH]` ->__ By default the `head` utility displays the first ten lines of a file.
+__`head -n [COUNT] [FILE_PATH]` ->__ By default the `head` utility displays the first 10 lines of a file.
 
 __`tail -n [COUNT] [FILE_PATH]` ->__ By default `tail` will show the last 10 lines of the file.
 
@@ -46,6 +51,11 @@ __`find [PATH] [OPTIONS] [FILE_NAME]` ->__ `find` command will search for file 
 
 __`which [COMMAND_NAME]` ->__`which` will print the full path of the provided `PROGRAMNAME` on `STDOUT`  It does this by searching for an executable or script in the directories listed in the environment variable `PATH`. (example: `which ls` -> output: /usr/bin/ls)
 
+__`tee [TARGET_PATH]` ->__ pipe(`|)` yerine (`T`) şeklinde çalışır. Yani hem `TARGET_PATH`'e hem de devamında gelecek olan komuta girdileri iletir. Örn:
+
+![[Screenshot from 2024-10-15 19-34-33.png]]
+
+<hr>
 
 ## Check User Information
 
