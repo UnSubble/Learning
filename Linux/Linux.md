@@ -36,7 +36,7 @@ __`sed -i 's/OLD_WORD/NEW_WORD/g' [FILE_PATH]` ->__ Replaces the new word with a
 
 __`tr old_chars new_chars [INPUT]` ->__ eski karakterleri yenileri ile değiştirir. 
 
-
+__`uname -a` ->__ sistem bilgisini gösterir.
 ## File Management
 
 __`less [FILE_PATH]` ->__ When you want to view a file that is longer than one screen, you can use either the `less` utility or the more utility.
@@ -53,7 +53,7 @@ __`which [COMMAND_NAME]` ->__`which` will print the full path of the provided 
 
 __`tee [TARGET_PATH]` ->__ pipe(`|)` yerine (`T`) şeklinde çalışır. Yani hem `TARGET_PATH`'e hem de devamında gelecek olan komuta girdileri iletir. Örn:
 
-<img title="tee usage example 1" src="./Screenshot from 2024-10-15 19-34-33.png">
+<img title="tee usage example 1" src="./Screenshot.png">
 
 <hr>
 
@@ -140,3 +140,23 @@ __`2>` ->__  2 yani stderr'dir.
 __`<` ->__ default olarak 0 yani stdin'dir.
 
 __`2&>` ->__ 1 ve 2 yani stdout&stderr'dir. Burada 2 stream'ini 1'e yönlendiriyor.
+
+
+# Package Management
+
+__dpkg(debian package) ->__ .deb paketleri için
+
+__apt(advanced package tool)__ -> arkada dpkg kullanıyor. eğer aradığımız proje bir repoda varsa otomatik indirir. Ayrıca gereken bağımlılıkları da indirir.
+
+__`dpkg -i [PATH]` ->__  .deb uzantılı paketimizi kurar.
+
+__`dpkg -r [APP_NAME]` ->__  uygulamayı kaldırır. Eğer bağımlılıklar varsa hata verir.
+
+__`dpkg -rP [APP_NAME]` ->__  hem uygulamayı hem de config dosyalarını kaldırmak için kullanılır.
+
+__`dpkg -I [PATH]` ->__  .deb uzantılı paketimiz hakkında bilgiler verir.
+
+__`dpkg -l` ->__  kurulu uygulamaları listeler. Spesifik istiyorsak o paketin ismini verebiliriz.
+
+
+
