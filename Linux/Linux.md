@@ -181,6 +181,10 @@ __`etc/passwd` ->__ user'ların configlerini içerir.
 
 __`etc/shadow` ->__ kullanıcı parolalarının şifrelenmiş halini tutar.
 
+__`userdel [USERNAME]` ->__ kullanıcı siler.
+
+__`deluser [USERNAME]` ->__ kullanıcı siler.
+
 <hr>
 
 Her kullanıcın bir ana grubu ve çokça alt grubu olabilir. Mesela `sudo` komutuyla komutları yetkili bir şekilde kullanabilmek için sudo grubunda bulunmalıdır.
@@ -208,5 +212,11 @@ __`chmod g+r [FILE_NAME]` ->__ gruba okuma yetkisi verir.
 __`chmod o+r [FILE_NAME]` ->__ diğer kullanıcılara okuma yetkisi verir.
 
 __`chmod a+r [FILE_NAME]` ->__ tüm kullanıcılara okuma yetkisi verir.
+
+<hr>
+
+__visudo ->__ `sudoer` dosyası için özel bir editör
+
+__`etc/sudoer.tmp` ->__ sudo config dosyası. 
 
 
