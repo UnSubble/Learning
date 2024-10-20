@@ -160,3 +160,53 @@ __`dpkg -l` ->__  kurulu uygulamaları listeler. Spesifik istiyorsak o paketin i
 
 
 
+# Users and Groups
+
+__super user ->__  root kullanıcısına verilen isim.
+
+__system user ->__  sistemdeki araçlar tarafından kullanılan hesaplar. (Tüm araçları user hesabı olmasa da bazı araçların user hesapları vardır.)
+
+__normal user ->__  root tarafından oluşturulan standart hesaplardır.
+
+__sudo ->__ normal kullanıcıların root'muş gibi işlem yapmasını sağlar.
+
+__`adduser [USERNAME]` ->__ yeni kullanıcı oluşturur.
+
+__`useradd -m [USERNAME]` ->__ daha seçenekli `adduser` işlemi fakat her işlemi elle girmek gerekir. (Örn: `-m` ev dizini oluşturmasını söylemek için.)
+
+__`passwd [USERNAME]` ->__ `useradd` komutu ile oluşturduğumuz kullanıcıya şifre verebilmek için. Ayrıca mevcut kullanıcıların şifrelerini değiştirmek için de kullanılır.
+
+__`etc/passwd` ->__ user'ların configlerini içerir.
+- Oturum açmayı engellemek için `etc/passwd` dosyasından ilgili kullanıcının shell'lini `/usr/sbin/nologin` veya `/bin/false` olarak değiştirebiliriz. (nologin kullanıcıya giriş yaparken hata verir fakat false hiçbir şey yazdırmaz.)
+
+__`etc/shadow` ->__ kullanıcı parolalarının şifrelenmiş halini tutar.
+
+<hr>
+
+Her kullanıcın bir ana grubu ve çokça alt grubu olabilir. Mesela `sudo` komutuyla komutları yetkili bir şekilde kullanabilmek için sudo grubunda bulunmalıdır.
+
+__`etc/group` ->__ grupların config dosyası.
+
+__`groupadd [GROUP_NAME]` ->__ yeni grup oluşturmak için kullanılır.
+
+__`gpasswd -a [USERNAME] [GROUP_NAME]` ->__ gruba yeni kullanıcı eklemek için kullanılır.
+
+__`gpasswd -a [USERNAME] [GROUP_NAME]` ->__ gruptan kullanıcıyı silmek için kullanılır.
+
+__`groups [USERNAME]` ->__ kullanıcının gruplarını listeler.
+
+__`groupdel [GROUP_NAME]` ->__ grubu silmek için kullanılır.
+
+<hr>
+
+- `ls -l`'deki `rwxr-xr--` gibi bilgilerin ilk 3'lüsü kullanıcın ortadaki 3'lüsü grubun sondaki 3'lüsü de  grup dışında kalan kullanıcıların yetkileridir.
+
+__`chmod u+r [FILE_NAME]` ->__ kullanıcıya okuma yetkisi verir.
+
+__`chmod g+r [FILE_NAME]` ->__ gruba okuma yetkisi verir.
+
+__`chmod o+r [FILE_NAME]` ->__ diğer kullanıcılara okuma yetkisi verir.
+
+__`chmod a+r [FILE_NAME]` ->__ tüm kullanıcılara okuma yetkisi verir.
+
+
