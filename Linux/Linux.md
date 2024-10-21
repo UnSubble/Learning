@@ -195,7 +195,7 @@ __`groupadd [GROUP_NAME]` ->__ yeni grup oluşturmak için kullanılır.
 
 __`gpasswd -a [USERNAME] [GROUP_NAME]` ->__ gruba yeni kullanıcı eklemek için kullanılır.
 
-__`gpasswd -a [USERNAME] [GROUP_NAME]` ->__ gruptan kullanıcıyı silmek için kullanılır.
+__`gpasswd -d [USERNAME] [GROUP_NAME]` ->__ gruptan kullanıcıyı silmek için kullanılır.
 
 __`groups [USERNAME]` ->__ kullanıcının gruplarını listeler.
 
@@ -220,3 +220,19 @@ __visudo ->__ `sudoer` dosyası için özel bir editör
 __`etc/sudoer.tmp` ->__ sudo config dosyası. 
 
 
+# Disk Management
+- diskler `/dev/` altında bulunur. Çünkü diskler de bir byte akışı olduğundan file olarak tutulur.
+
+__`lsblk` ->__ disk üzerindeki blokları listeler.
+
+__`lsblk -f` ->__ diski ve file system'ini gösterir.
+
+__`fdisk -l` ->__ sisteme bağlı tüm diskleri listeler.
+
+__`fdisk [DISK_FILE_PATH]` ->__ disk bölümleme aracına giriş yaparız.
+
+__`mkfs.[FILE_SYSTEM]` ->__ bölümlediğimiz diske file system eklemek için. bir sürü araç olduğundan `mkfs.` girip spesifik olanı bulmak için tab'a basmamız yeterli.
+
+__`mount [DISK_PATH] [TARGET_PATH]` ->__ disk'e file system atamak için ilk önce bir dizine bağlamamız yeterli. Bu tool da bağlamaya yarar. mount'la bağladığımız diskler ve klasör kalıcı değildir. Yani bağlanan klasör yeniden başlatıldıktan sonra eski haline döner. Bağlantıyı kalıcı yapmak için `/etc/fstab` isimli config dosyasını configure etmek gerekir.
+
+__`umount [FILE_PATH_ATTACHED_TO_DISK]` ->__ bağlantıyı koparmamızı sağlar
