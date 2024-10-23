@@ -307,3 +307,35 @@ __`dmesg` ->__ Sistemin başlangıcından itibaren çekirdeğin aygıtlarla ilgi
 __`last` ->__ Başarılı oturum açma işlemlerini listeler.
 
 __`lastb` ->__ Başarısız oturum açma işlemlerini listeler.
+
+# Network Commands
+__ttl:__ time to live, yani maksimum yönlendirilme sayısı.
+- `/etc/resolv.conf` -> DNS adı tutan adresleri buraya girebiliriz. (Default olarak modem dns'i için 192.168.1..1 bulunur.) Ama bu reboot'tan sonra eski haline döner.
+
+__`ip a` | `ip addr` | `ip address`->__ sisteme bağlı ip adreslerini ve detaylarını gösterir.
+
+__`ip link set [NIC_NAME] [UP/DOWN]` ->__ internet kartının durumunu değiştirebiliriz. (Up: aktif, Down: pasif)
+
+__`ip route` ->__ yönlendirici adreslerini gösterir. (modemi de gösterir çünkü default gateway router'ımız modem.)
+
+__`nmtui` ->__ Network Manager Terminal User Interface 
+
+__`nmcli` ->__ Network Manager Command Line Interface
+
+__`scp` ->__ Secure Copy Protocol: dosyaları güvenli şekilde SSH üzerinden kopyalamamıza yarayan araç.
+
+__`hostnamectl` ->__ host bilgilerini gösterir.
+
+__`nslookup [DOMAIN_NAME]` ->__ ilgili alan adının ip'sini verir.
+
+__`sudo hostnamectl hostname [HOST_NAME]` ->__ hostname'i değiştirmemizi sağlar.  Uygulamaların da tanıyabilmesi için `/etc/hosts`'tan da değiştirilmesi gerekir. (İlk önce config dosyasının değiştirilip ardından `hostnamectl` komutu kullanılmalıdır. Aksi halde hata verir.)
+
+__`arp` ->__ ARP tablosunu gösterir.
+
+__`route` ->__ router bilgilerini gösterir.
+
+__`tarceroute [DOMAIN_NAME/IP]` ->__ bir hedefe ulaşırken geçtiğimiz router'ları gösterir.
+
+__`ss` ->__ sistem üzerindeki soketleri listeler.
+
+__`ss -tuln` ->__ açık olan portları girilen seçeneklerle birlikte gösterilir.
