@@ -159,7 +159,6 @@ __`dpkg -I [PATH]` ->__  .deb uzantılı paketimiz hakkında bilgiler verir.
 __`dpkg -l` ->__  kurulu uygulamaları listeler. Spesifik istiyorsak o paketin ismini verebiliriz.
 
 
-
 # Users and Groups
 
 __super user ->__  root kullanıcısına verilen isim.
@@ -235,4 +234,69 @@ __`mkfs.[FILE_SYSTEM]` ->__ bölümlediğimiz diske file system eklemek için. b
 
 __`mount [DISK_PATH] [TARGET_PATH]` ->__ disk'e file system atamak için ilk önce bir dizine bağlamamız yeterli. Bu tool da bağlamaya yarar. mount'la bağladığımız diskler ve klasör kalıcı değildir. Yani bağlanan klasör yeniden başlatıldıktan sonra eski haline döner. Bağlantıyı kalıcı yapmak için `/etc/fstab` isimli config dosyasını configure etmek gerekir.
 
-__`umount [FILE_PATH_ATTACHED_TO_DISK]` ->__ bağlantıyı koparmamızı sağlar
+__`umount [FILE_PATH_ATTACHED_TO_DISK]` ->__ bağlantıyı koparmamızı sağlar.
+
+
+# Process Management
+- Mesela firefox'u arka planda çalıştırdığımızda `[1] 32349` gibi bir çıktı alırız. parantez içindeki bash kabuğundaki işin id'si iken diğer sayı bilgisayarda çalışan işlem olarak id'yi verir.
+
+__`jobs` ->__ çalışan bash'teki arka plandaki işleri gösterir.
+
+__`fg [APP_BASH_ID]` ->__ arka planda çalışan işi öne alır.
+
+__`bg [APP_BASH_ID]` ->__ önde çalışan işi arka plana atar.
+
+__`kill %[APP_BASH_ID]` ->__ ilgili id'li işlemi sonlandırır.
+
+__`disown %[APP_BASH_ID]` ->__ bash, ilgili id'deki işlemi kendi işlerinden çıkarır. Böylece bash'i kapattığımızda o işlem hala aktif kalır.
+
+__`top` ->__ Anlık olarak çalışan işlemleri gösterir.
+
+__`htop` ->__ `top`'tan daha gelişmiş bir işlem görüntüleyici.
+
+__`ps -aux` ->__ sadece bir kez işlemleri detaylı bir şekilde bastırır.
+
+__`kill -19 [PROCESS_ID]` ->__ işlemi durdurur.
+
+__`kill -18 [PROCESS_ID]` ->__ işlemi devam ettirir.
+
+__`kill -9 [PROCESS_ID]` ->__ force kill atar.
+
+__`kill -15 [PROCESS_ID]` ->__ terminate etmeye zorlar.
+
+__`killall [PROCESS_NAME]` ->__ isme göre işlemi sonlandırır.
+
+__`pgrep [TEXT]` ->__ grep'in process'ler için olan hali.
+
+
+# Service Management
+- Servisler daemon olarak geçiyor.
+- yaygın olarak servisler için `systemd` kullanılır. Yönetebilmek için de `systemctl` kullanılır.
+- `/etc/systemd/system/` altında servisler tanımlanır.
+
+__`systemctl list-unit` ->__ aktif birimleri listeler.
+
+__`systemctl list-unit --all` ->__ tüm birimleri listeler.
+
+__`systemctl status [UNIT_NAME]` ->__ spesifik bir birimi gösterir.
+
+__`systemctl start [UNIT_NAME]` ->__ adı verilen birimi başlatır.
+
+__`systemctl stop [UNIT_NAME]` ->__ adı verilen birimi sonlandırır.
+
+__`systemctl restart [UNIT_NAME]` ->__ adı verilen servisi yeniden başlatır.
+
+__`systemctl enable [UNIT_NAME]` ->__ adı verilen servisi pc'yi boot'larken başlatılmasını sağlar.
+
+__`systemctl disable [UNIT_NAME]` ->__ adı verilen servisi pc'yi boot'larken başlatılmamasını sağlar.
+
+__`systemctl target add [UNIT_NAME]` ->__ birimleri target gruplarına ekler. (poweroff.target, rescue.target, multi-user.target, graphical.target, reboot.target vb.)
+
+__`systemctl get-default` ->__ varsayılan olan grubu gösterir.
+
+__`systemctl set-default [TARGET_NAME]` ->__ varsayılan grubu değiştirebiliriz.
+
+__`systemctl list-units --type target --all` ->__ tüm target birimlerini listeler.
+
+
+# About Log Files...
