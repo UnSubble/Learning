@@ -51,7 +51,7 @@ __`find [PATH] [OPTIONS] [FILE_NAME]` ->__ `find` command will search for file 
 
 __`which [COMMAND_NAME]` ->__`which` will print the full path of the provided `PROGRAMNAME` on `STDOUT`  It does this by searching for an executable or script in the directories listed in the environment variable `PATH`. (example: `which ls` -> output: /usr/bin/ls)
 
-__`tee [TARGET_PATH]` ->__ pipe(`|)` yerine (`T`) şeklinde çalışır. Yani hem `TARGET_PATH`'e hem de devamında gelecek olan komuta girdileri iletir. Örn:
+__`tee [TARGET_PATH]` ->__ pipe(`|`) yerine (`T`) şeklinde çalışır. Yani hem `TARGET_PATH`'e hem de devamında gelecek olan komuta girdileri iletir. Örn:
 
 <img title="tee usage example 1" src="./Screenshot.png">
 
@@ -300,3 +300,10 @@ __`systemctl list-units --type target --all` ->__ tüm target birimlerini listel
 
 
 # About Log Files...
+- log dosyaları `/var/log` altında saklanır.
+
+__`dmesg` ->__ Sistemin başlangıcından itibaren çekirdeğin aygıtlarla ilgili üretmiş olduğu tüm log'ları listeler.
+
+__`last` ->__ Başarılı oturum açma işlemlerini listeler.
+
+__`lastb` ->__ Başarısız oturum açma işlemlerini listeler.
