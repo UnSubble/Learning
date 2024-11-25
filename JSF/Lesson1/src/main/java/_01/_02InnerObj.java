@@ -1,10 +1,5 @@
 package _01;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-
-@ManagedBean
-@SessionScoped
 public class _02InnerObj {
 	private String city;
 	private String district;
