@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<h:inputTextarea value="Read Only!!" readonly="true" cols="10"
+		rows="10" />
+	<h:outputStylesheet library="css" name="style.css" />
+
+	<h:outputText value="red class'i style.css'te yer almaktadir."
+		styleClass="red" />
+
+	<!-- POST mantığında çalışır -->
+	<h:commandLink value="Page1" action="page1" />
+	<!--  -->
+
+	<h:commandLink value="Page1 action"
+		action="#{linkBean.navigateToPage1}" />
+
+	<h:commandLink value="Page1" action="page1">
+		<f:param name="test" value="val" />
+	</h:commandLink>
+
+	<!-- GET mantığında çalışır. -->
+	<h:link value="Page1" outcome="page1" />
+	<!--  -->
+
+	<h:outputLink value="page1.xhtml" />
+
+	<h:selectBooleanCheckbox value="#{checkboxBean.contactMe}" />
+
+	<h:selectManyCheckbox value="#{checkboxBean.progLanguages}">
+		<f:selectItem itemValue="Java" itemLabel="Java Prog" />
+		<f:selectItem itemValue="C++" itemLabel="C++ Prog" />
+		<f:selectItem itemValue="Python" itemLabel="Python Prog" />
+		<f:selectItem itemValue="Go" itemLabel="Go Prog" />
+	</h:selectManyCheckbox>
+
+	<h:selectManyCheckbox validator="#{checkboxBean.jpaFrameworks}">
+		<f:selectItems itemValue="#{checkboxBean.frameworks}" />
+	</h:selectManyCheckbox>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<h:body>
+	<h:form prependId="false">
+		<table>
+			<tr>
+				<td>Key:</td>
+				<td><h:inputText value="#{ajaxBean2.key}" id="keyId" /></td>
+			</tr>
+			<tr>
+				<td>Value:</td>
+				<td><h:inputText value="#{ajaxBean2.value}" id="valueId" /></td>
+			</tr>
+
+		</table>
+		<p>
+			<h:selectOneMenu value="#{ajaxBean2.selectedFramework}"
+				id="frameworksId">
+				<f:selectItems value="#{ajaxBean2.frameworkMap}" />
+			</h:selectOneMenu>
+		</p>
+		<p>
+			<h:commandButton value="Add">
+				<f:ajax execute="keyId valueId frameworksId"
+					listener="#{ajaxBean2.addFramework(ajaxBean2.key,ajaxBean2.value)}"
+					render="frameworksId"></f:ajax>
+			</h:commandButton>
+		</p>
+	</h:form>
+</h:body>
+</html>

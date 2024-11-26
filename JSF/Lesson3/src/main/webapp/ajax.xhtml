@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<h:body>
+	<h:form prependId="false">
+		<table>
+			<tr>
+				<td>Product:</td>
+				<td><h:inputText value="#{ajaxBean.name}" id="nameId" /></td>
+			</tr>
+			<tr>
+				<td>Price:</td>
+				<td><h:inputText value="#{ajaxBean.surname}" id="surnameId" /></td>
+			</tr>
+
+		</table>
+		<p>
+			<h:commandButton value="click">
+				<f:ajax execute="nameId" render="outputId"></f:ajax>
+			</h:commandButton>
+		</p>
+		<p>
+			<h:outputText id="outputId" value="#{ajaxBean.helloMessage}" />
+		</p>
+	</h:form>
+</h:body>
+</html>
