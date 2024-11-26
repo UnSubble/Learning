@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<h:body>
+	<h:dataTable value="#{peopleBean.people}" var="myPerson">
+		<!-- rowClasses="css1 css2" şeklinde belirtirsek ilk veri css1 class'ını 2.si css2 3.sü css1... 
+		şeklinde alarak gider. Aynısı column için de columnClasses ile olur.-->
+		<h:column>
+			<f:facet name="header">Name</f:facet> #{myPerson.name}</h:column>
+		<h:column>
+			<f:facet name="header">Surname</f:facet> #{myPerson.surname}</h:column>
+		<h:column>
+			<f:facet name="header">Age</f:facet> #{myPerson.age}</h:column>
+		<h:column>
+			<f:facet name="header">Gender</f:facet> #{myPerson.gender}</h:column>
+	</h:dataTable>
+</h:body>
+</html>
