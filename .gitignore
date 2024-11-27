@@ -1,6 +1,8 @@
 **/target/
 **/.obsidian
 **/[Ss]ervers/
+**/.gitignore
+!.gitignore
 
 ### IntelliJ IDEA ###
 **/.idea/
