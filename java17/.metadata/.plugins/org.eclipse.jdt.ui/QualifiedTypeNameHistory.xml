@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.annotation.Inherited"/>
+    <fullyQualifiedTypeName name="Vertebrate.Dolphin"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="Vertebrate.Mammal"/>
+    <fullyQualifiedTypeName name="Vertebrate"/>
+    <fullyQualifiedTypeName name="java.lang.annotation.Target"/>
+    <fullyQualifiedTypeName name="java.lang.annotation.ElementType"/>
+    <fullyQualifiedTypeName name="Vertebrate2"/>
+    <fullyQualifiedTypeName name="java.lang.annotation.Repeatable"/>
+    <fullyQualifiedTypeName name="java.lang.annotation.Retention"/>
+</qualifiedTypeNameHistroy>

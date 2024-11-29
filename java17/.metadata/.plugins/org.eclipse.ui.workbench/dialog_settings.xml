@@ -2,4 +2,11 @@
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialog.dialogBounds">
 	</section>
+	<section name="PropertyDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="571"/>
+		<item key="DIALOG_Y_ORIGIN" value="154"/>
+		<item key="DIALOG_WIDTH" value="891"/>
+		<item key="DIALOG_HEIGHT" value="588"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|10.0|0|GTK|1|"/>
+	</section>
 </section>
