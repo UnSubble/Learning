@@ -161,11 +161,11 @@ __`dpkg -l` ->__  kurulu uygulamaları listeler. Spesifik istiyorsak o paketin i
 
 # Users and Groups
 
-__super user ->__  root kullanıcısına verilen isim.
+__super user ->__ root kullanıcısına verilen isim.
 
-__system user ->__  sistemdeki araçlar tarafından kullanılan hesaplar. (Tüm araçları user hesabı olmasa da bazı araçların user hesapları vardır.)
+__system user ->__ sistemdeki araçlar tarafından kullanılan hesaplar. (Tüm araçları user hesabı olmasa da bazı araçların user hesapları vardır.)
 
-__normal user ->__  root tarafından oluşturulan standart hesaplardır.
+__normal user ->__ root tarafından oluşturulan standart hesaplardır.
 
 __sudo ->__ normal kullanıcıların root'muş gibi işlem yapmasını sağlar.
 
