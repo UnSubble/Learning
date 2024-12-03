@@ -23,3 +23,34 @@ __HTTP POST__ -> Non-idempotent özelliğe sahiptir. Her POST isteğinde sonuç 
 __HTTP PUT__ -> Update amacıyla tercih edilir. Put da get gibi idempotent özelliğe sahiptir. Sadece ilk istek etkili olur, sonraki aynı isteklerin hiçbir etkisi olmaz.
 
 __HTTP DELETE__ -> Bu da tıpkı put gibidir. Idempotent özelliğe sahiptir ama aynı isteklerin ilki için bu durum geçerli değildir.
+
+# JAX-WS
+-> Java Api For Xml Web Services
+	Sadece xml formatını destekler.
+Farklı framework veya farklı diller de olsa ortak çalışma temel amaçtır.
+
+__JAX-WS__, XML mesajlarında SOAP standardını kullanır.
+__SOAP__ -> Simple Object Access Protocol
+
+	- Metro Project, Glassfish
+	- Apache CXF
+	- Apache Axis2
+	- JBossWS
+	- IBM Websphere
+	- Oracle Weblogic
+
+SOAP mesajları complex yapıya sahiptir. Jax-ws bizim için soap mesajlarını oluşturur veya parse eder.
+
+__WSDL__ -> web service description language
+WSDL, XML tabanlı bir dokümandır. Web Service hakkındaki bilgiler bu yapıda yer almaktadır.
+WSDL, bir service'e nasıl erişebiliriz, hangi operasyonları yapabiliriz, bunları tanımlar.
+
+### WSDL Elements
+__1-) Definitions:__ WSDL dokümanının root elemanıdır. Web service ismini tanımlar. targetNamespace, packageName ile ilişkilidir.
+__2-) Type:__ Web service'te kullanılan data tiplerini belirtir. String, integer gibi tipler için tanımlamaya gerek yoktur. Daha kompleks tipler için tanımlanır.
+__3-) Message:__ Web service'te tanımlı metotları ifade etmektedir. `<part>` elementi de dönüş ve input parametrelerini belirtir.
+__4-) PortType:__ İçerisinde `<input>`, `<output>` elementleri yer alır. `<message>` elementindeki değer ile eşleşir. Soyut metotların tanımlarını içeren kümedir. `<portType name="[NAME]">` içerisindeki isim alanı interface, SEI'dir(Service endpoint interface). SEI içerisindeki(yani interface içerisindeki) tanımlı metotlar `<operation>` etiketi içerisinde yer almaktadır. 
+	SEI üzerinde de `@WebService` annotation'ı kullanılır. 
+	Metotlar üzerinde de `@WebMethod` annotation'ı kullanılır.
+__5-) Binding:__ `<binding>` elementi içerisinde `<soap:binding>` gibi elementler yer almaktadır. style olarak rpc, document olabilir.
+__6-) Service:__ SOAP adres elementi yer alır. Ayrıca location bilgisi, servis implementasyonunun ismi yer alır.
