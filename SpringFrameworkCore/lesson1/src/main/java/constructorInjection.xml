@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd ">
+	<bean id="employeeId"
+		class="com.unsubble._04.spring.constructor.injection.model.Employee">
+		<constructor-arg value="test"></constructor-arg>
+		<constructor-arg value="surtest"></constructor-arg>
+		<constructor-arg value="100000"></constructor-arg>
+		<constructor-arg value="1970"></constructor-arg>
+		<constructor-arg value="M"></constructor-arg>
+		<constructor-arg ref="addressId"></constructor-arg>
+	</bean>
+
+	<bean id="addressId"
+		class="com.unsubble._04.spring.setter.injection.model.Address">
+		<property name="city" value="istanbul" />
+		<property name="country" value="türkiye" />
+	</bean>
+
+	<!-- xmlns:c="http://www.springframework.org/schema/c" -->
+	<bean id="employeeIdd"
+		class="com.unsubble._04.spring.constructor.injection.model.Employee2"
+		c:name="test" 
+		c:surname="surtest" 
+		c:salary="10000" 
+		c:birthYear="1970"
+		c:gender="M" />
+		
+	<bean id="confuseId"
+		class="com.unsubble._04.spring.constructor.confuse.model.ConfuseConstructor">
+		<constructor-arg value="100"></constructor-arg> 
+		<!-- <constructor-arg value="100" type="int"></constructor-arg> -->
+		<!-- demezsek string'e default verir. -->
+	</bean>
+</beans>
