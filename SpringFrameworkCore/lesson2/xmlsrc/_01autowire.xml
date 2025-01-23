@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:annotation-config /> <!-- @Autowired @Postconstruct @PreDestroy @Resource gibi annotation'ların 
+		kullanılmasını sağlar -->
+
+	<bean id="employeeId"
+		class="com.unsubble._01.autowire.model.Employee">
+		<property name="name" value="test" />
+		<property name="surname" value="surtest" />
+	</bean>
+
+	<bean id="addressId"
+		class="com.unsubble._01.autowire.model.Address">
+		<property name="city" value="istanbul" />
+		<property name="country" value="türkiye" />
+	</bean>
+	
+	<!-- <bean id="addressId2"
+		class="com.unsubble._01.autowire.model.Address">
+		<property name="city" value="ankara" />
+		<property name="country" value="türkiye" />
+	</bean> -->
+</beans>
