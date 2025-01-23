@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd ">
+	<bean id="employeeId"
+		class="com.unsubble._04.spring.setter.injection.model.Employee">
+		<property name="name" value="test" />
+		<property name="surname" value="surtest" />
+		<property name="salary" value="100000" />
+		<property name="birthYear" value="1970" />
+		<property name="gender" value="M" />
+	</bean>
+	<bean id="collectionId"
+		class="com.unsubble._05.spring.collection.injection.model.CollectionInjection">
+		<property name="myList">
+			<list>
+				<value>element1</value>
+				<value>element2</value>
+				<value>element3</value>
+				<value>element4</value>
+			</list>
+		</property>
+		<property name="myEmployeeList">
+			<list>
+				<ref bean="employeeId" />
+				<bean id="employeeId2"
+					class="com.unsubble._04.spring.setter.injection.model.Employee">
+					<property name="name" value="test" />
+					<property name="surname" value="surtest" />
+					<property name="gender" value="F"></property>
+				</bean>
+			</list>
+		</property>
+		<property name="mySet">
+			<set>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+			</set>
+		</property>
+		<property name="myMap">
+			<map>
+				<entry key="test1">
+					<value>value2</value>
+				</entry>
+				<entry key="test2" value="value2" />
+				<entry key="test3" value="value3" />
+				<entry key="test4" value="value4" />
+			</map>
+		</property>
+		<property name="properties">
+			<props>
+				<prop key="test1">value1</prop>
+				<prop key="test2">value2</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/util
+						http://www.springframework.org/schema/util/spring-util.xsd">
+						
+	<!-- 
+		@Service
+		@Repository
+		@Controller
+		@Component
+		sterotype annotation'lar
+		bunları pakette search et ve bul
+	 -->
+	<context:component-scan base-package="com.unsubble._05.spring.collection.injection.model" />
+	
+	<util:list id="utilList">
+		<value>element1</value>
+		<value>element2</value>
+	</util:list>
+	<util:set id="utilSet">
+		<value>100</value>
+		<value>200</value>
+	</util:set>
+	<util:map id="utilMap">
+		<entry key="test1" value="value1" />
+		<entry key="test2" value="value2" />
+	</util:map>
+</beans>
