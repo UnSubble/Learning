@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context.xsd ">
+
+<!-- 
+	$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+	BU DOSYA ÖRNEK OLARAK ALINDI. AYARLAMALAR YAPILMADAN ÇALIŞMAZ!
+	$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ -->
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>myconfiguration/jdbc.properties</value>
+		</property>
+	</bean>
+
+	<bean id="dataSourceId"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+
+	<bean id="entityManagerFactoryId"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+
+		<property name="dataSource" ref="dataSourceId" />
+		<property name="jpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter" />
+		</property>
+		<property name="packagesToScan" value="model" />
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="eclipselink.ddl-generation">drop-and-create-tables</prop>
+				<prop key="eclipselink.logging.level">FINE</prop>
+			</props>
+		</property>
+
+		<property name="jpaPropertyMap">
+			<map>
+				<entry key="eclipselink.weaving" value="false" />
+			</map>
+		</property>
+	</bean>
+
+
+	<bean id="personDAOImpl" class="dao.PersonDAOJPADetailedImpl">
+		<property name="entityManagerFactory" ref="entityManagerFactoryId" />
+	</bean>
+
+</beans>

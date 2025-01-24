@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>jdbc.properties</value>
+		</property>
+	</bean>
+
+	<bean id="dataSourceId"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="" />
+		<property name="password" value="" />
+	</bean>
+
+	<bean id="personDAOImplId"
+		class="com.unsubble._01.jdbc.dao.PersonDAOImpl">
+		<property name="dataSource" ref="dataSourceId" />
+	</bean>
+
+	<bean id="jdbcTemplateId"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSourceId" />
+	</bean>
+
+	<bean id="personDAOJDBCTemplateImplId"
+		class="com.unsubble._01.jdbc.dao.PersonDAOJDBCTemplateImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplateId" />
+	</bean>
+	
+	<bean id="namedJdbcTemplateId"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSourceId" />
+	</bean>
+	
+	<bean id="personDAONamedJDBCTemplateImplId"
+		class="com.unsubble._01.jdbc.dao.PersonDAONamedJDBCTemplateImpl">
+		<property name="namedParameterJdbcTemplate" ref="namedJdbcTemplateId" />
+	</bean>
+</beans>
