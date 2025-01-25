@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd ">
+
+
+	<bean id="employeeService"
+		class="com.unsubble._02.aspectj.service.EmployeeService" />
+	<bean id="auditServiceAspectId"
+		class="com.unsubble._02.aspectj.service.AuditServiceAspect" />
+
+	<aop:config>
+		<aop:aspect id="myaspect" ref="auditServiceAspectId">
+
+			<!-- Before It is valid too! <aop:pointcut id="pointCutBeforeId" expression="execution(* 
+				com.unsubble._02.aspectj.service.EmployeeService.saveEmployee(..))" /> -->
+			<aop:pointcut id="pointCutBeforeId"
+				expression="execution(* *.saveEmployee(..))" />
+			<aop:before method="logBefore"
+				pointcut-ref="pointCutBeforeId" />
+
+
+		</aop:aspect>
+	</aop:config>
+
+</beans>
