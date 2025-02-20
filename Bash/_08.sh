@@ -17,7 +17,7 @@
 # STRING Karsilastirma
 # if [] icin
 # = -> equal
-# == -> equal
+# == -> equal (for pattern matching)
 # != -> not equal
 # < -> less than
 # > -> greater than
