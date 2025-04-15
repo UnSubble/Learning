@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<poi.version>5.2.3</poi.version>
+		<poi.version>5.4.0</poi.version>
 	</properties>
 
 	<build>
