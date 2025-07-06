@@ -1,6 +1,4 @@
 # Docker
-
-
 ## Image
 - __Docker Image:__ Bir uygulamanın ve çalışması için gereken ek kütüphane ve yazılımların paketlenmiş haline docker image denir. Image için kernel'e gerek yoktur. Çünkü container'lar üzerinde çalıştığı işletim sisteminin kernel'ını kullanırlar.
 - Image bir şablondur.
@@ -16,7 +14,7 @@
 
 
 ## Bind Mounts
-- Bu işlem tıpkı volume gibidir. Volume'den farkı ise volume'da eğer container'daki bağladığımız dizin doluysa ve volume dizini boşsa oradaki dosyalar volume dizinine kopyalanır. Tam tersi şeklinde ise tam tersi olur. İkisi de doluysa yine volume'daki kopyalanır. Bind mounts'ta ise yalnızca host'tan verdiğimiz dizin container'ın dizinine kopyalanır.
+- Bu işlem tıpkı volume gibidir. Volume'den farkı ise volume'da eğer container'daki bağladığımız dizin doluysa ve volume dizini boşsa oradaki dosyalar volume dizinine kopyalanır. Tam tersi şeklinde ise tam tersi olur. İkisi de doluysa yine volume'daki kopyalanır. Bind mounts'ta ise yalnızca host'tan verdiğimiz dizin, container'ın dizinine kopyalanır.
 - Ayrıca volume bir docker objesi iken bind mounts sadece path'tir.
 
 
@@ -26,27 +24,27 @@
 
 ## Docker CLI 101
 
-__`docker container start`->__  Durmuş olan container'ı başlatmamıza yarar.
+__`docker container start [NAME]`->__  Durmuş olan container'ı başlatmamıza yarar.
 
-__`docker container create`->__  Yeni bir container yaratır.
+__`docker container create [IMAGE_NAME]`->__  Yeni bir container yaratır.
 
-__`docker container run`->__ Start ve create'i bir arada yapar. Eğer container varsa create işlemi yapmaz.
+__`docker container run [IMAGE_NAME]`->__ Start ve create'i bir arada yapar. Eğer container varsa create işlemi yapmaz.
 
-__`docker container run --name`->__ İsim vererek run'lar.
+__`docker container run --name [NAME] [IMAGE_NAME]`->__ İsim vererek run'lar.
 
 __`docker container ls -a`->__ Tüm container'ları gösterir.
 
 __`docker container run -p [CONTAINER_PORT]:[HOST_PORT]`->__ Port girmemize olanak tanır.
 
-__`docker container stop`->__ Container'ı durdurur.
+__`docker container stop [NAME]`->__ Container'ı durdurur.
 
 __`docker ps -a`->__ docker container ls -a ile aynı görevi yapar.
 
-__`docker container rm`->__ Çalışmayan container'ı silmemizi sağlar.
+__`docker container rm [NAME]`->__ Çalışmayan container'ı silmemizi sağlar.
 
-__`docker container rm -f`->__ Force'layarak container'ı silmemizi sağlar.
+__`docker container rm -f [NAME]`->__ Force'layarak container'ı silmemizi sağlar.
 
-__`docker container run -d`->__ Detach çalıştırır. (İçindeki shell'i bizim shell'e bağlamadan)
+__`docker container run -d [IMAGE_NAME]`->__ Detach çalıştırır. (İçindeki shell'i bizim shell'e bağlamadan)
 
 __`docker container exec -it [NAME] sh`->__ İlgili container'ın shell'ine bağlanmamıza yarar.
 
@@ -57,11 +55,13 @@ __`docker image pull [NAME]`->__ İlgili image'ı çeker.
 __`docker volume create [NAME]`->__ Volume oluşturur.
 
 __`docker container run -it -v [VOLUME_NAME]:[TARGET_PATH] [CONTAINER_NAME] sh`->__ Container'ı başlatırken ilgili volume'ü container'ın içindeki ilgili dizine bağlar ve container'ın shell'ine bağlanır.  
+__`docker container run -it -v [VOLUME_NAME]:[TARGET_PATH]:ro [CONTAINER_NAME] sh`->__ Volume'e bağlı dosyayı read-only olarak container'da shell ile başlatmamızı sağlar.
 
 __`docker volume inspect [NAME]`->__ Volume'ün detaylarını gösterir. (Hangi path'i linklediğini vs.)
 
 __`docker container run -it -v [LOCAL_PATH]:[TARGET_PATH] [CONTAINER_NAME] sh`->__ Bind Mounts yapmamızı sağlar.
 
+__`docker container run --rm -it [IMAGE_NAME] sh`->__ İlgili image'ten container oluşturur ve ana işlem bittiği anda bu container'ı siler.
 
 ## Docker CLI 102
 
