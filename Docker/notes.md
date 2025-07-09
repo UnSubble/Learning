@@ -34,7 +34,7 @@ __`docker container run --name [NAME] [IMAGE_NAME]`->__ İsim vererek run'lar.
 
 __`docker container ls -a`->__ Tüm container'ları gösterir.
 
-__`docker container run -p [CONTAINER_PORT]:[HOST_PORT]`->__ Port girmemize olanak tanır.
+__`docker container run -p [HOST_PORT]:[CONTAINER_PORT]`->__ Port girmemize olanak tanır.
 
 __`docker container stop [NAME]`->__ Container'ı durdurur.
 
@@ -101,7 +101,7 @@ __`docker run ---env-file [FILE_PATH] [CONTAINER_NAME]`->__ bir dosyadan environ
 
 __`docker image build -t [ORG/REPO] -f [Dockerfile_PATH]` ->__ Dockerfile dosyası ile image yaratır. -f zaten default olarak Dockerfile olduğu için ekstradan belirtmeye gerek yok.
 
-__`docker image build -t [ORG/REPO]` ->__ üstteki kısa hali.
+__`docker image build -t [ORG/REPO]` ->__ üsttekinin kısa hali.
 
 __`docker image build -t [ORG/REPO] -f [Dockerfile_PATH] [SRC_PATH]` ->__ src path root klasörü belirtmeye yarar. Örneğin kopyalama işleminde /app location'ını default root'ta arar. Fakat path olarak `.` girdiğimizde ./app location'ınında arama yapar.
 
@@ -165,8 +165,8 @@ services:
 			- [VOLUME_NAME]:[DEST_PATH]
 			...
 		environment:
-			- [VAR]:[VALUE]
-			- [VAR]:[VALUE]
+			VAR: [VALUE]
+			VAR2: [VALUE]
 			...
 		networks:
 			- [NETWORK_NAME]
@@ -240,8 +240,8 @@ services:
 				delay: [DURATION]
 				order: stop-first
 		environment:
-			- [VAR]:[VALUE]
-			- [VAR]:[VALUE]
+			VAR: [VALUE]
+			VAR2: [VALUE]
 			...
 		networks:
 			- [NETWORK_NAME]
