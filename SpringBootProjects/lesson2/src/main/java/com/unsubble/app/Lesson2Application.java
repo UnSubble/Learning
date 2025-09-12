@@ -2,6 +2,11 @@ package com.unsubble.app;
 
 import com.unsubble._01.Person;
 import com.unsubble._02.Lesson2Sec2Application;
+import com.unsubble._03.Lesson2Sec3Application;
+import com.unsubble._04.Lesson2Sec4Application;
+import com.unsubble._05.Lesson2Sec5Application;
+import com.unsubble._06.Lesson2Sec6Application;
+import com.unsubble._07.Lesson2Sec7Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +22,12 @@ public class Lesson2Application {
 
 	public static void main(String[] args) {
         // SpringApplication.run(Lesson2Application.class, args);
-        SpringApplication.run(Lesson2Sec2Application.class, args);
+        // SpringApplication.run(Lesson2Sec2Application.class, args);
+        // SpringApplication.run(Lesson2Sec3Application.class, args);
+        // SpringApplication.run(Lesson2Sec4Application.class, args);
+        // SpringApplication.run(Lesson2Sec5Application.class, args);
+        // SpringApplication.run(Lesson2Sec6Application.class, args);
+        SpringApplication.run(Lesson2Sec7Application.class, args);
 	}
 
     @Autowired
