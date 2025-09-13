@@ -1,20 +1,31 @@
 package com.unsubble.lesson4._01;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.unsubble.lesson4.exception.IdOutOfBoundsException;
 import com.unsubble.lesson4.model.Student;
 import com.unsubble.lesson4.response.StudentDeleteResponse;
 import com.unsubble.lesson4.response.StudentUpdateResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @SpringBootApplication
 @RestController
 @RequestMapping("/student")
 public class Lesson4Sec1Application {
+
+    private ObjectMapper objectMapper;
+
+    @Autowired
+    public Lesson4Sec1Application(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
 
     @GetMapping
     public List<Student> allStudents() {
@@ -60,7 +71,8 @@ public class Lesson4Sec1Application {
         System.out.println("inserted student: " + student);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update") // PUT Method'u data'nın tamamını update ederken
+                            // PATCH Method yalnızca bir kısmını update etmek için kullanılır.
     public ResponseEntity<StudentUpdateResponse> updateStudent(@RequestBody Student student)
                                                                     throws IdOutOfBoundsException {
         Student mockObj = new Student(1, "test name", "test last name", "test@domain.com");
@@ -91,5 +103,29 @@ public class Lesson4Sec1Application {
         StudentDeleteResponse response = new StudentDeleteResponse(HttpStatus.OK.value(), System.currentTimeMillis(),
                 "The deletion is successful.");
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<StudentUpdateResponse> patchStudent(@PathVariable long id,
+                                                              @RequestBody Map<String, Object> partialData)
+                                                                throws IdOutOfBoundsException {
+        Student mockObj = new Student(id, "test name", "test last name", "test@domain.com");
+        if (mockObj == null)
+            throw new IdOutOfBoundsException();
+        System.out.println("before update: " + mockObj);
+        Student student = apply(partialData, mockObj);
+        System.out.println("after update: " + student);
+        StudentUpdateResponse response = new StudentUpdateResponse(HttpStatus.OK.value(), System.currentTimeMillis(),
+                "The related student is updated.");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    private Student apply(Map<String, Object> partialData, Student student) {
+        ObjectNode studentNode = objectMapper.convertValue(student, ObjectNode.class);
+        ObjectNode dataNode = objectMapper.convertValue(partialData, ObjectNode.class);
+
+        studentNode.setAll(dataNode);
+
+        return objectMapper.convertValue(studentNode, Student.class);
     }
 }
