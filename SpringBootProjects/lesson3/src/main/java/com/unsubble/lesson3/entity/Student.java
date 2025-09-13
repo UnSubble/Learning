@@ -2,8 +2,8 @@ package com.unsubble.lesson3.entity;
 
 import jakarta.persistence.*;
 
-@Table
-@Entity(name = "student")
+@Table(name = "student")
+@Entity
 public class Student {
     @Id
     @Column(name = "id")
@@ -23,10 +23,14 @@ public class Student {
         super();
     }
 
-    public Student(String email, String lastName, String firstName, long id) {
+    public Student(String email, String lastName, String firstName) {
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
+    }
+
+    public Student(String email, String lastName, String firstName, long id) {
+        this(email, lastName, firstName);
         this.id = id;
     }
 
