@@ -34,6 +34,7 @@
         <div>
             <label for="productId"><spring:message code="form.productId"/>:</label>
             <form:input path="productId" id="productId"/>
+            <form:errors path="productId" />
         </div>
 
         <div>
@@ -53,7 +54,6 @@
 
         <div>
             <label for="manufacturer"><spring:message code="form.manufacturer"/>:</label>
-            <jsp:useBean id="manufacturerMap" scope="request" type="java.util.Map" />
             <form:radiobuttons path="manufacturer" items="${manufacturerMap}" cssStyle="width: 75px"/>
         </div>
 
@@ -69,7 +69,6 @@
 
         <div>
             <label for="condition"><spring:message code="form.condition"/>:</label>
-            <jsp:useBean id="conditionsList" scope="request" type="java.util.List"/>
             <form:select path="condition" items="${conditionsList}" />
         </div>
 
