@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<form method="POST" th:action="@{/getFormWithObj}" th:object="${student}">
+    <label>Name:
+        <input type="text" th:field="*{name}">
+    </label>
+    <label>StudentId:
+        <input type="text" th:field="*{id}">
+    </label>
+    <label>Country:
+        <select th:field="*{country}">
+            <option th:value="TR">Turkey</option>
+            <option th:value="AZ">Azerbaijan</option>
+            <option th:value="KZ">Kazakhstan</option>
+        </select>
+    </label>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" th:action="@{/getHelloForm}"> <!-- bunun yerine daha karmaşık objeler için th:object kullanılır.
+                                                        -->
+        <label>Name:
+<input type="text" name="name">
+</label>
+            <input type="submit" value="Submit">
+    </form>
+
+<p th:text="'Hello ' + ${nname}"></p>
+
+<p th:text="'Secret msg:' + ${secret}" style="color: white" />
+</body>
+</html>
