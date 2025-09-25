@@ -14,11 +14,20 @@
         <input type="text" th:field="*{id}">
     </label>
     <label>Country:
-        <select th:field="*{country}">
+        <!--<select th:field="*{country}">
             <option th:value="TR">Turkey</option>
             <option th:value="AZ">Azerbaijan</option>
             <option th:value="KZ">Kazakhstan</option>
+        </select>-->
+        <select th:field="*{country}">
+            <option th:each="tempCountry : ${countries}" th:value="${tempCountry}" th:text="${tempCountry}" />
         </select>
+    </label>
+    <label>
+        Favorite Programming Language:
+        <input type="radio" th:value="go" th:field="*{favProgrammingLanguage}" th:text="Go">
+        <input type="radio" th:value="java" th:field="*{favProgrammingLanguage}" th:text="Java">
+        <input type="radio" th:value="python" th:field="*{favProgrammingLanguage}" th:text="Python">
     </label>
     <input type="submit" value="Submit">
 </form>

@@ -5,6 +5,7 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 @SpringBootApplication(scanBasePackages = "com.unsubble.lesson7")
 @Controller
 public class Lesson7Sec1Application {
+
+    @Value("${student.countries}")
+    private List<String> countries;
 
     @GetMapping("/getTemplate")
     public String getTemplate(Model model) {
@@ -58,5 +63,10 @@ public class Lesson7Sec1Application {
     public String postFormWithObj(@ModelAttribute("student") Student student) {
         System.out.println(student);
         return "helloFormWithObj";
+    }
+
+    @ModelAttribute("countries")
+    public List<String> getCountries() {
+        return countries;
     }
 }
