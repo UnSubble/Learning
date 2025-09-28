@@ -6,9 +6,16 @@
 </head>
 <body>
 <form th:action="@{/validate}" th:object="${person}" method="post">
-    <label>Name:</label>
-    <input type="text" th:field="*{name}" />
+    <label>Name:
+    <input type="text" th:field="*{name}" /></label>
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <br>
+    <label>Age:
+        <input type="text" th:field="*{age}" /></label>
+    <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+    <label>Email:
+        <input type="text" th:field="*{email}" /></label>
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
     <input type="submit" value="Submit" />
 </form>
 
