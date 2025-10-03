@@ -3,6 +3,7 @@ package com.unsubble.lesson9._01.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -15,7 +16,8 @@ public class SecurityConfig {
                 .formLogin(form ->
                         form.loginPage("/myLoginPage")
                                 .loginProcessingUrl("/authenticateTheUser")
-                                .permitAll());
+                                .permitAll())
+                .logout(LogoutConfigurer::permitAll);
         return security.build();
     }
 }

@@ -13,6 +13,12 @@
         <label>
             <input type="password" name="password">
         </label>
+        <div th:if="${param.error}" style="color: red">
+            <p>Invalid username or password!</p>
+        </div>
+        <div th:if="${param.logout}" style="color: greenyellow">
+            <p>You have been logged out!</p>
+        </div>
         <input type="submit" value="Login">
     </form>
 </body>
